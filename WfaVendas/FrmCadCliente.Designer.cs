@@ -69,6 +69,7 @@
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             datanascLabel = new System.Windows.Forms.Label();
             codcliLabel = new System.Windows.Forms.Label();
             telefoneLabel = new System.Windows.Forms.Label();
@@ -81,95 +82,114 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pc_clientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lP2DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // datanascLabel
             // 
             datanascLabel.AutoSize = true;
-            datanascLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            datanascLabel.Location = new System.Drawing.Point(323, 274);
+            datanascLabel.BackColor = System.Drawing.Color.MistyRose;
+            datanascLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            datanascLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            datanascLabel.Location = new System.Drawing.Point(284, 277);
             datanascLabel.Name = "datanascLabel";
-            datanascLabel.Size = new System.Drawing.Size(107, 13);
+            datanascLabel.Size = new System.Drawing.Size(122, 15);
             datanascLabel.TabIndex = 18;
             datanascLabel.Text = "Data de Nascimento:";
             // 
             // codcliLabel
             // 
             codcliLabel.AutoSize = true;
-            codcliLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            codcliLabel.Location = new System.Drawing.Point(323, 69);
+            codcliLabel.BackColor = System.Drawing.Color.MistyRose;
+            codcliLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            codcliLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            codcliLabel.Location = new System.Drawing.Point(284, 72);
             codcliLabel.Name = "codcliLabel";
-            codcliLabel.Size = new System.Drawing.Size(43, 13);
+            codcliLabel.Size = new System.Drawing.Size(49, 15);
             codcliLabel.TabIndex = 2;
             codcliLabel.Text = "Código:";
             // 
             // telefoneLabel
             // 
             telefoneLabel.AutoSize = true;
-            telefoneLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            telefoneLabel.Location = new System.Drawing.Point(323, 251);
+            telefoneLabel.BackColor = System.Drawing.Color.MistyRose;
+            telefoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            telefoneLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            telefoneLabel.Location = new System.Drawing.Point(284, 254);
             telefoneLabel.Name = "telefoneLabel";
-            telefoneLabel.Size = new System.Drawing.Size(52, 13);
+            telefoneLabel.Size = new System.Drawing.Size(58, 15);
             telefoneLabel.TabIndex = 16;
             telefoneLabel.Text = "Telefone:";
             // 
             // cepLabel
             // 
             cepLabel.AutoSize = true;
-            cepLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            cepLabel.Location = new System.Drawing.Point(323, 225);
+            cepLabel.BackColor = System.Drawing.Color.MistyRose;
+            cepLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            cepLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            cepLabel.Location = new System.Drawing.Point(284, 228);
             cepLabel.Name = "cepLabel";
-            cepLabel.Size = new System.Drawing.Size(29, 13);
+            cepLabel.Size = new System.Drawing.Size(32, 15);
             cepLabel.TabIndex = 14;
             cepLabel.Text = "Cep:";
             // 
             // ufLabel
             // 
             ufLabel.AutoSize = true;
-            ufLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            ufLabel.Location = new System.Drawing.Point(323, 199);
+            ufLabel.BackColor = System.Drawing.Color.MistyRose;
+            ufLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ufLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            ufLabel.Location = new System.Drawing.Point(284, 202);
             ufLabel.Name = "ufLabel";
-            ufLabel.Size = new System.Drawing.Size(19, 13);
+            ufLabel.Size = new System.Drawing.Size(20, 15);
             ufLabel.TabIndex = 12;
             ufLabel.Text = "uf:";
             // 
             // bairroLabel
             // 
             bairroLabel.AutoSize = true;
-            bairroLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            bairroLabel.Location = new System.Drawing.Point(323, 173);
+            bairroLabel.BackColor = System.Drawing.Color.MistyRose;
+            bairroLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            bairroLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            bairroLabel.Location = new System.Drawing.Point(284, 176);
             bairroLabel.Name = "bairroLabel";
-            bairroLabel.Size = new System.Drawing.Size(37, 13);
+            bairroLabel.Size = new System.Drawing.Size(43, 15);
             bairroLabel.TabIndex = 10;
             bairroLabel.Text = "Bairro:";
             // 
             // cidadeLabel
             // 
             cidadeLabel.AutoSize = true;
-            cidadeLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            cidadeLabel.Location = new System.Drawing.Point(323, 147);
+            cidadeLabel.BackColor = System.Drawing.Color.MistyRose;
+            cidadeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            cidadeLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            cidadeLabel.Location = new System.Drawing.Point(284, 150);
             cidadeLabel.Name = "cidadeLabel";
-            cidadeLabel.Size = new System.Drawing.Size(43, 13);
+            cidadeLabel.Size = new System.Drawing.Size(49, 15);
             cidadeLabel.TabIndex = 8;
             cidadeLabel.Text = "Cidade:";
             // 
             // enderecoLabel
             // 
             enderecoLabel.AutoSize = true;
-            enderecoLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            enderecoLabel.Location = new System.Drawing.Point(323, 121);
+            enderecoLabel.BackColor = System.Drawing.Color.MistyRose;
+            enderecoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            enderecoLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            enderecoLabel.Location = new System.Drawing.Point(284, 124);
             enderecoLabel.Name = "enderecoLabel";
-            enderecoLabel.Size = new System.Drawing.Size(56, 13);
+            enderecoLabel.Size = new System.Drawing.Size(63, 15);
             enderecoLabel.TabIndex = 6;
             enderecoLabel.Text = "Endereço:";
             // 
             // nomeLabel
             // 
             nomeLabel.AutoSize = true;
-            nomeLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            nomeLabel.Location = new System.Drawing.Point(323, 95);
+            nomeLabel.BackColor = System.Drawing.Color.MistyRose;
+            nomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            nomeLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            nomeLabel.Location = new System.Drawing.Point(284, 98);
             nomeLabel.Name = "nomeLabel";
-            nomeLabel.Size = new System.Drawing.Size(38, 13);
+            nomeLabel.Size = new System.Drawing.Size(44, 15);
             nomeLabel.TabIndex = 4;
             nomeLabel.Text = "Nome:";
             // 
@@ -280,70 +300,78 @@
             // txtCodcli
             // 
             this.txtCodcli.Enabled = false;
-            this.txtCodcli.Location = new System.Drawing.Point(449, 66);
+            this.txtCodcli.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodcli.Location = new System.Drawing.Point(410, 69);
             this.txtCodcli.Name = "txtCodcli";
             this.txtCodcli.ReadOnly = true;
-            this.txtCodcli.Size = new System.Drawing.Size(112, 20);
+            this.txtCodcli.Size = new System.Drawing.Size(112, 21);
             this.txtCodcli.TabIndex = 344;
             // 
             // txtNome
             // 
             this.txtNome.Enabled = false;
-            this.txtNome.Location = new System.Drawing.Point(449, 92);
+            this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNome.Location = new System.Drawing.Point(410, 95);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(301, 20);
+            this.txtNome.Size = new System.Drawing.Size(301, 21);
             this.txtNome.TabIndex = 8;
             // 
             // txtEndereco
             // 
             this.txtEndereco.Enabled = false;
-            this.txtEndereco.Location = new System.Drawing.Point(449, 118);
+            this.txtEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEndereco.Location = new System.Drawing.Point(410, 121);
             this.txtEndereco.Name = "txtEndereco";
-            this.txtEndereco.Size = new System.Drawing.Size(301, 20);
+            this.txtEndereco.Size = new System.Drawing.Size(301, 21);
             this.txtEndereco.TabIndex = 9;
             // 
             // txtCidade
             // 
             this.txtCidade.Enabled = false;
-            this.txtCidade.Location = new System.Drawing.Point(449, 144);
+            this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCidade.Location = new System.Drawing.Point(410, 147);
             this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(200, 20);
+            this.txtCidade.Size = new System.Drawing.Size(200, 21);
             this.txtCidade.TabIndex = 10;
             // 
             // txtBairro
             // 
             this.txtBairro.Enabled = false;
-            this.txtBairro.Location = new System.Drawing.Point(449, 170);
+            this.txtBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBairro.Location = new System.Drawing.Point(410, 173);
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(200, 20);
+            this.txtBairro.Size = new System.Drawing.Size(200, 21);
             this.txtBairro.TabIndex = 11;
             // 
             // mskUf
             // 
             this.mskUf.Enabled = false;
-            this.mskUf.Location = new System.Drawing.Point(449, 196);
+            this.mskUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskUf.Location = new System.Drawing.Point(410, 199);
             this.mskUf.Mask = ">LL";
             this.mskUf.Name = "mskUf";
-            this.mskUf.Size = new System.Drawing.Size(37, 20);
+            this.mskUf.Size = new System.Drawing.Size(37, 21);
             this.mskUf.TabIndex = 12;
             // 
             // mskCep
             // 
             this.mskCep.Enabled = false;
-            this.mskCep.Location = new System.Drawing.Point(449, 222);
+            this.mskCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskCep.Location = new System.Drawing.Point(410, 225);
             this.mskCep.Mask = "00000-000";
             this.mskCep.Name = "mskCep";
-            this.mskCep.Size = new System.Drawing.Size(100, 20);
+            this.mskCep.Size = new System.Drawing.Size(100, 21);
             this.mskCep.TabIndex = 13;
             this.mskCep.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // mskTelefone
             // 
             this.mskTelefone.Enabled = false;
-            this.mskTelefone.Location = new System.Drawing.Point(449, 248);
+            this.mskTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskTelefone.Location = new System.Drawing.Point(410, 251);
             this.mskTelefone.Mask = "(00) 90000-0000";
             this.mskTelefone.Name = "mskTelefone";
-            this.mskTelefone.Size = new System.Drawing.Size(100, 20);
+            this.mskTelefone.Size = new System.Drawing.Size(100, 21);
             this.mskTelefone.TabIndex = 14;
             this.mskTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -351,10 +379,11 @@
             // 
             this.dtpDatanasc.CustomFormat = "dd/MM/yyyy";
             this.dtpDatanasc.Enabled = false;
+            this.dtpDatanasc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDatanasc.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDatanasc.Location = new System.Drawing.Point(449, 274);
+            this.dtpDatanasc.Location = new System.Drawing.Point(410, 277);
             this.dtpDatanasc.Name = "dtpDatanasc";
-            this.dtpDatanasc.Size = new System.Drawing.Size(100, 20);
+            this.dtpDatanasc.Size = new System.Drawing.Size(100, 21);
             this.dtpDatanasc.TabIndex = 15;
             // 
             // pc_clientesTableAdapter
@@ -373,6 +402,7 @@
             // btnIncluir
             // 
             this.btnIncluir.BackColor = System.Drawing.Color.SeaShell;
+            this.btnIncluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIncluir.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnIncluir.Location = new System.Drawing.Point(152, 12);
             this.btnIncluir.Name = "btnIncluir";
@@ -385,6 +415,7 @@
             // btnAlterar
             // 
             this.btnAlterar.BackColor = System.Drawing.Color.SeaShell;
+            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAlterar.Location = new System.Drawing.Point(251, 12);
             this.btnAlterar.Name = "btnAlterar";
@@ -397,6 +428,7 @@
             // btnExcluir
             // 
             this.btnExcluir.BackColor = System.Drawing.Color.SeaShell;
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnExcluir.Location = new System.Drawing.Point(350, 12);
             this.btnExcluir.Name = "btnExcluir";
@@ -409,6 +441,7 @@
             // btnPesquisar
             // 
             this.btnPesquisar.BackColor = System.Drawing.Color.SeaShell;
+            this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPesquisar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnPesquisar.Location = new System.Drawing.Point(449, 12);
             this.btnPesquisar.Name = "btnPesquisar";
@@ -422,6 +455,7 @@
             // 
             this.btnGravar.BackColor = System.Drawing.Color.SeaShell;
             this.btnGravar.Enabled = false;
+            this.btnGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGravar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnGravar.Location = new System.Drawing.Point(548, 12);
             this.btnGravar.Name = "btnGravar";
@@ -435,6 +469,7 @@
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.SeaShell;
             this.btnCancelar.Enabled = false;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnCancelar.Location = new System.Drawing.Point(647, 12);
             this.btnCancelar.Name = "btnCancelar";
@@ -447,6 +482,7 @@
             // btnSair
             // 
             this.btnSair.BackColor = System.Drawing.Color.SeaShell;
+            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSair.Location = new System.Drawing.Point(746, 12);
             this.btnSair.Name = "btnSair";
@@ -455,6 +491,15 @@
             this.btnSair.Text = "Sai&r";
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.MistyRose;
+            this.pictureBox1.Location = new System.Drawing.Point(234, 48);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(515, 273);
+            this.pictureBox1.TabIndex = 345;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmCadCliente
             // 
@@ -488,6 +533,7 @@
             this.Controls.Add(cidadeLabel);
             this.Controls.Add(bairroLabel);
             this.Controls.Add(this.txtNome);
+            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmCadCliente";
@@ -496,6 +542,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pc_clientesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lP2DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -533,6 +580,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

@@ -24,7 +24,26 @@ namespace WfaVendas
 
         private void cadastroDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach(Form form in MdiChildren)
+            {
+                if (form is FrmCadCliente)
+                {
+                    form.Focus();
+                    return;
+                }
 
+            }
+            FrmCadCliente frmCadCliente = new FrmCadCliente();
+            frmCadCliente.MdiParent = this;
+            frmCadCliente.Show();
+        }
+
+        private void FrmMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Deseja mesmo sair?", "Atenção:", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

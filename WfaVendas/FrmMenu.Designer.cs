@@ -267,6 +267,7 @@
             this.Name = "FrmMenu";
             this.Text = "Controle de Vendas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMenu_FormClosing);
             this.mnuMenu.ResumeLayout(false);
             this.mnuMenu.PerformLayout();
             this.sstStatus.ResumeLayout(false);

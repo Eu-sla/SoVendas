@@ -48,10 +48,10 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Georgia", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(240, 246);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(214, 232);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(312, 42);
+            this.label2.Size = new System.Drawing.Size(381, 42);
             this.label2.TabIndex = 1;
             this.label2.Text = "Controle de Vendas\r\n";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
