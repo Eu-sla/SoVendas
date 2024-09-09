@@ -89,7 +89,7 @@ namespace WfaVendas
                     ((TextBox)item).Text = "";
                     if (((TextBox)item).Name == "txtPrecounit" || ((TextBox)item).Name == "txtSubtotal" || ((TextBox)item).Name == "txtTotal")
                     {
-                        ((TextBox)item).Text == "R$ 0.00";
+                        ((TextBox)item).Text = "R$ 0.00";
                     }
                 }
             }
