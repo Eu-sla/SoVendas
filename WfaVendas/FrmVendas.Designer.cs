@@ -73,6 +73,8 @@
             this.btnAlterarItem = new System.Windows.Forms.Button();
             this.btnIncluirItem = new System.Windows.Forms.Button();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
+            this.pcprodutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lP2DataSet1 = new WfaVendas.LP2DataSet1();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.dgvItens = new System.Windows.Forms.DataGridView();
@@ -81,8 +83,6 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
-            this.lP2DataSet1 = new WfaVendas.LP2DataSet1();
-            this.pcprodutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pc_produtoTableAdapter = new WfaVendas.LP2DataSet1TableAdapters.pc_produtoTableAdapter();
             numvendaLabel = new System.Windows.Forms.Label();
             datavendaLabel = new System.Windows.Forms.Label();
@@ -100,16 +100,16 @@
             this.grpItens.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pc_itemvendaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcprodutoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lP2DataSet1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lP2DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcprodutoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // numvendaLabel
             // 
             numvendaLabel.AutoSize = true;
-            numvendaLabel.Location = new System.Drawing.Point(27, 44);
+            numvendaLabel.Location = new System.Drawing.Point(93, 44);
             numvendaLabel.Name = "numvendaLabel";
             numvendaLabel.Size = new System.Drawing.Size(60, 13);
             numvendaLabel.TabIndex = 15;
@@ -118,7 +118,7 @@
             // datavendaLabel
             // 
             datavendaLabel.AutoSize = true;
-            datavendaLabel.Location = new System.Drawing.Point(27, 70);
+            datavendaLabel.Location = new System.Drawing.Point(93, 70);
             datavendaLabel.Name = "datavendaLabel";
             datavendaLabel.Size = new System.Drawing.Size(61, 13);
             datavendaLabel.TabIndex = 19;
@@ -127,7 +127,7 @@
             // dataentregaLabel
             // 
             dataentregaLabel.AutoSize = true;
-            dataentregaLabel.Location = new System.Drawing.Point(341, 70);
+            dataentregaLabel.Location = new System.Drawing.Point(407, 70);
             dataentregaLabel.Name = "dataentregaLabel";
             dataentregaLabel.Size = new System.Drawing.Size(67, 13);
             dataentregaLabel.TabIndex = 21;
@@ -136,7 +136,7 @@
             // obsLabel
             // 
             obsLabel.AutoSize = true;
-            obsLabel.Location = new System.Drawing.Point(27, 92);
+            obsLabel.Location = new System.Drawing.Point(93, 93);
             obsLabel.Name = "obsLabel";
             obsLabel.Size = new System.Drawing.Size(27, 13);
             obsLabel.TabIndex = 23;
@@ -145,7 +145,7 @@
             // codproLabel
             // 
             codproLabel.AutoSize = true;
-            codproLabel.Location = new System.Drawing.Point(65, 63);
+            codproLabel.Location = new System.Drawing.Point(58, 50);
             codproLabel.Name = "codproLabel";
             codproLabel.Size = new System.Drawing.Size(43, 13);
             codproLabel.TabIndex = 0;
@@ -154,7 +154,7 @@
             // quantidadeLabel
             // 
             quantidadeLabel.AutoSize = true;
-            quantidadeLabel.Location = new System.Drawing.Point(254, 60);
+            quantidadeLabel.Location = new System.Drawing.Point(204, 50);
             quantidadeLabel.Name = "quantidadeLabel";
             quantidadeLabel.Size = new System.Drawing.Size(63, 13);
             quantidadeLabel.TabIndex = 2;
@@ -163,7 +163,7 @@
             // precounitLabel
             // 
             precounitLabel.AutoSize = true;
-            precounitLabel.Location = new System.Drawing.Point(461, 62);
+            precounitLabel.Location = new System.Drawing.Point(358, 50);
             precounitLabel.Name = "precounitLabel";
             precounitLabel.Size = new System.Drawing.Size(54, 13);
             precounitLabel.TabIndex = 4;
@@ -172,7 +172,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(637, 62);
+            label1.Location = new System.Drawing.Point(499, 50);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(47, 13);
             label1.TabIndex = 33;
@@ -187,12 +187,21 @@
             label2.TabIndex = 35;
             label2.Text = "total";
             // 
+            // codcliLabel
+            // 
+            codcliLabel.AutoSize = true;
+            codcliLabel.Location = new System.Drawing.Point(436, 44);
+            codcliLabel.Name = "codcliLabel";
+            codcliLabel.Size = new System.Drawing.Size(38, 13);
+            codcliLabel.TabIndex = 26;
+            codcliLabel.Text = "codcli:";
+            // 
             // btnSair
             // 
             this.btnSair.BackColor = System.Drawing.Color.SeaShell;
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSair.Location = new System.Drawing.Point(638, 12);
+            this.btnSair.Location = new System.Drawing.Point(638, 7);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
             this.btnSair.TabIndex = 14;
@@ -205,7 +214,7 @@
             this.btnCancelar.Enabled = false;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCancelar.Location = new System.Drawing.Point(539, 12);
+            this.btnCancelar.Location = new System.Drawing.Point(539, 7);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 13;
@@ -218,7 +227,7 @@
             this.btnGravar.Enabled = false;
             this.btnGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGravar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnGravar.Location = new System.Drawing.Point(440, 12);
+            this.btnGravar.Location = new System.Drawing.Point(440, 7);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 23);
             this.btnGravar.TabIndex = 12;
@@ -230,7 +239,7 @@
             this.btnPesquisar.BackColor = System.Drawing.Color.SeaShell;
             this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPesquisar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnPesquisar.Location = new System.Drawing.Point(341, 12);
+            this.btnPesquisar.Location = new System.Drawing.Point(341, 7);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
             this.btnPesquisar.TabIndex = 11;
@@ -242,7 +251,7 @@
             this.btnExcluir.BackColor = System.Drawing.Color.SeaShell;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnExcluir.Location = new System.Drawing.Point(242, 12);
+            this.btnExcluir.Location = new System.Drawing.Point(242, 7);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 23);
             this.btnExcluir.TabIndex = 10;
@@ -254,7 +263,7 @@
             this.btnAlterar.BackColor = System.Drawing.Color.SeaShell;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAlterar.Location = new System.Drawing.Point(143, 12);
+            this.btnAlterar.Location = new System.Drawing.Point(143, 7);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(75, 23);
             this.btnAlterar.TabIndex = 9;
@@ -266,7 +275,7 @@
             this.btnIncluir.BackColor = System.Drawing.Color.SeaShell;
             this.btnIncluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIncluir.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnIncluir.Location = new System.Drawing.Point(44, 12);
+            this.btnIncluir.Location = new System.Drawing.Point(44, 7);
             this.btnIncluir.Name = "btnIncluir";
             this.btnIncluir.Size = new System.Drawing.Size(75, 23);
             this.btnIncluir.TabIndex = 8;
@@ -363,38 +372,38 @@
             // 
             this.txtNumvenda.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_vendaBindingSource, "numvenda", true));
             this.txtNumvenda.Enabled = false;
-            this.txtNumvenda.Location = new System.Drawing.Point(100, 41);
+            this.txtNumvenda.Location = new System.Drawing.Point(166, 41);
             this.txtNumvenda.Name = "txtNumvenda";
             this.txtNumvenda.ReadOnly = true;
-            this.txtNumvenda.Size = new System.Drawing.Size(200, 20);
+            this.txtNumvenda.Size = new System.Drawing.Size(151, 20);
             this.txtNumvenda.TabIndex = 16;
             // 
             // dtpVenda
             // 
             this.dtpVenda.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.pc_vendaBindingSource, "datavenda", true));
             this.dtpVenda.Enabled = false;
-            this.dtpVenda.Location = new System.Drawing.Point(100, 66);
+            this.dtpVenda.Location = new System.Drawing.Point(166, 66);
             this.dtpVenda.Name = "dtpVenda";
-            this.dtpVenda.Size = new System.Drawing.Size(200, 20);
+            this.dtpVenda.Size = new System.Drawing.Size(151, 20);
             this.dtpVenda.TabIndex = 20;
             // 
             // dtpEntrega
             // 
             this.dtpEntrega.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.pc_vendaBindingSource, "dataentrega", true));
             this.dtpEntrega.Enabled = false;
-            this.dtpEntrega.Location = new System.Drawing.Point(414, 66);
+            this.dtpEntrega.Location = new System.Drawing.Point(480, 66);
             this.dtpEntrega.Name = "dtpEntrega";
-            this.dtpEntrega.Size = new System.Drawing.Size(200, 20);
+            this.dtpEntrega.Size = new System.Drawing.Size(144, 20);
             this.dtpEntrega.TabIndex = 22;
             // 
             // txtObs
             // 
             this.txtObs.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_vendaBindingSource, "obs", true));
             this.txtObs.Enabled = false;
-            this.txtObs.Location = new System.Drawing.Point(30, 108);
+            this.txtObs.Location = new System.Drawing.Point(122, 93);
             this.txtObs.Multiline = true;
             this.txtObs.Name = "txtObs";
-            this.txtObs.Size = new System.Drawing.Size(361, 40);
+            this.txtObs.Size = new System.Drawing.Size(512, 40);
             this.txtObs.TabIndex = 24;
             // 
             // grpItens
@@ -413,9 +422,9 @@
             this.grpItens.Controls.Add(codproLabel);
             this.grpItens.Controls.Add(this.btnIncluirItem);
             this.grpItens.Controls.Add(this.cmbProduto);
-            this.grpItens.Location = new System.Drawing.Point(18, 272);
+            this.grpItens.Location = new System.Drawing.Point(78, 263);
             this.grpItens.Name = "grpItens";
-            this.grpItens.Size = new System.Drawing.Size(915, 100);
+            this.grpItens.Size = new System.Drawing.Size(657, 109);
             this.grpItens.TabIndex = 25;
             this.grpItens.TabStop = false;
             this.grpItens.Text = "Itens da Venda";
@@ -423,7 +432,7 @@
             // txtSubtotal
             // 
             this.txtSubtotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_itemvendaBindingSource, "precounit", true));
-            this.txtSubtotal.Location = new System.Drawing.Point(697, 59);
+            this.txtSubtotal.Location = new System.Drawing.Point(502, 66);
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.ReadOnly = true;
             this.txtSubtotal.Size = new System.Drawing.Size(100, 20);
@@ -450,7 +459,7 @@
             // txtPrecounit
             // 
             this.txtPrecounit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_itemvendaBindingSource, "precounit", true));
-            this.txtPrecounit.Location = new System.Drawing.Point(521, 59);
+            this.txtPrecounit.Location = new System.Drawing.Point(361, 68);
             this.txtPrecounit.Name = "txtPrecounit";
             this.txtPrecounit.ReadOnly = true;
             this.txtPrecounit.Size = new System.Drawing.Size(100, 20);
@@ -496,7 +505,7 @@
             // nudQuantidade
             // 
             this.nudQuantidade.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.pc_itemvendaBindingSource, "quantidade", true));
-            this.nudQuantidade.Location = new System.Drawing.Point(323, 60);
+            this.nudQuantidade.Location = new System.Drawing.Point(207, 67);
             this.nudQuantidade.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -549,12 +558,22 @@
             this.cmbProduto.DataSource = this.pcprodutoBindingSource;
             this.cmbProduto.DisplayMember = "codpro";
             this.cmbProduto.FormattingEnabled = true;
-            this.cmbProduto.Location = new System.Drawing.Point(114, 60);
+            this.cmbProduto.Location = new System.Drawing.Point(61, 67);
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Size = new System.Drawing.Size(121, 21);
             this.cmbProduto.TabIndex = 1;
             this.cmbProduto.ValueMember = "codpro";
             this.cmbProduto.SelectedIndexChanged += new System.EventHandler(this.cmbProduto_SelectedIndexChanged);
+            // 
+            // pcprodutoBindingSource
+            // 
+            this.pcprodutoBindingSource.DataMember = "pc_produto";
+            this.pcprodutoBindingSource.DataSource = this.lP2DataSet1;
+            // 
+            // lP2DataSet1
+            // 
+            this.lP2DataSet1.DataSetName = "LP2DataSet1";
+            this.lP2DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel1
             // 
@@ -564,7 +583,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 546);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(996, 48);
+            this.panel1.Size = new System.Drawing.Size(804, 48);
             this.panel1.TabIndex = 26;
             // 
             // txtTotal
@@ -589,13 +608,13 @@
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9});
             this.dgvItens.DataSource = this.pc_itemvendaBindingSource;
-            this.dgvItens.Location = new System.Drawing.Point(18, 397);
+            this.dgvItens.Location = new System.Drawing.Point(12, 389);
             this.dgvItens.MultiSelect = false;
             this.dgvItens.Name = "dgvItens";
             this.dgvItens.ReadOnly = true;
             this.dgvItens.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvItens.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItens.Size = new System.Drawing.Size(462, 129);
+            this.dgvItens.Size = new System.Drawing.Size(776, 129);
             this.dgvItens.TabIndex = 26;
             // 
             // dataGridViewTextBoxColumn6
@@ -626,34 +645,15 @@
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
-            // codcliLabel
-            // 
-            codcliLabel.AutoSize = true;
-            codcliLabel.Location = new System.Drawing.Point(341, 44);
-            codcliLabel.Name = "codcliLabel";
-            codcliLabel.Size = new System.Drawing.Size(38, 13);
-            codcliLabel.TabIndex = 26;
-            codcliLabel.Text = "codcli:";
-            // 
             // cmbCliente
             // 
             this.cmbCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_vendaBindingSource, "codcli", true));
             this.cmbCliente.Enabled = false;
             this.cmbCliente.FormattingEnabled = true;
-            this.cmbCliente.Location = new System.Drawing.Point(385, 41);
+            this.cmbCliente.Location = new System.Drawing.Point(480, 41);
             this.cmbCliente.Name = "cmbCliente";
-            this.cmbCliente.Size = new System.Drawing.Size(121, 21);
+            this.cmbCliente.Size = new System.Drawing.Size(144, 21);
             this.cmbCliente.TabIndex = 27;
-            // 
-            // lP2DataSet1
-            // 
-            this.lP2DataSet1.DataSetName = "LP2DataSet1";
-            this.lP2DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // pcprodutoBindingSource
-            // 
-            this.pcprodutoBindingSource.DataMember = "pc_produto";
-            this.pcprodutoBindingSource.DataSource = this.lP2DataSet1;
             // 
             // pc_produtoTableAdapter
             // 
@@ -663,7 +663,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(996, 594);
+            this.ClientSize = new System.Drawing.Size(804, 594);
             this.Controls.Add(codcliLabel);
             this.Controls.Add(this.cmbCliente);
             this.Controls.Add(this.dgvItens);
@@ -696,11 +696,11 @@
             this.grpItens.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pc_itemvendaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcprodutoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lP2DataSet1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lP2DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcprodutoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
