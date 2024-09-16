@@ -45,5 +45,21 @@ namespace WfaVendas
                 e.Cancel = true;
             }
         }
+
+        private void cadastroDeVendasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in MdiChildren)
+            {
+                if (form is FrmVendas)
+                {
+                    form.Focus();
+                    return;
+                }
+
+            }
+            FrmVendas frmVendas = new FrmVendas();
+            frmVendas.MdiParent = this;
+            frmVendas.Show();
+        }
     }
 }

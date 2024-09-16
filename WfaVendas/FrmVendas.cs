@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WfaVendas.LP2DataSet1TableAdapters;
 using WfaVendas.LP2DataSetTableAdapters;
 
 namespace WfaVendas
@@ -26,8 +27,12 @@ namespace WfaVendas
 
         private void FrmVendas_Load(object sender, EventArgs e)
         {
+            // TODO: esta linha de código carrega dados na tabela 'lP2DataSet.pc_clientes'. Você pode movê-la ou removê-la conforme necessário.
+            this.pc_clientesTableAdapter.Fill(this.lP2DataSet.pc_clientes);
+            // TODO: esta linha de código carrega dados na tabela 'lP2DataSet.pc_produto'. Você pode movê-la ou removê-la conforme necessário.
+            this.pc_produtoTableAdapter1.Fill(this.lP2DataSet.pc_produto);
             // TODO: esta linha de código carrega dados na tabela 'lP2DataSet1.pc_produto'. Você pode movê-la ou removê-la conforme necessário.
-            this.pc_produtoTableAdapter.Fill(this.lP2DataSet1.pc_produto);
+            //this.pc_produtoTableAdapter.Fill(this.lP2DataSet1.pc_produto);
             // TODO: esta linha de código carrega dados na tabela 'lP2DataSet.pc_itemvenda'. Você pode movê-la ou removê-la conforme necessário.
             this.pc_itemvendaTableAdapter.Fill(this.lP2DataSet.pc_itemvenda);
             // TODO: esta linha de código carrega dados na tabela 'lP2DataSet.pc_venda'. Você pode movê-la ou removê-la conforme necessário.
@@ -45,7 +50,7 @@ namespace WfaVendas
             {
                 if(control is TextBox || control is DateTimePicker || control is ComboBox || control is NumericUpDown)
                 {
-                    ((TextBox)control).Enabled = hab;
+                    control.Enabled = hab;
                     // talvez control.Enabled = hab; se der problema
                 }
 
@@ -103,7 +108,7 @@ namespace WfaVendas
             {
                 if (dgvVendas.SelectedRows.Count > 0)
                 {
-                    this.pc_itemvendaTableAdapter.FillByNumVenda(this.LP2DataSet.pc_itemvenda, Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
+                    this.pc_itemvendaTableAdapter.FillByNumVenda(this.lP2DataSet.pc_itemvenda, Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
                     if (dgvItens.RowCount > 0)
                     {
                         double total = (Double)pc_itemvendaTableAdapter.TotalVenda(Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
@@ -122,7 +127,8 @@ namespace WfaVendas
 
         private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataTable produto = pc_produtoTableAdapter.GetDataBy(cmbProduto.Text);
+            //DataTable produto = pc_produtoTableAdapter.GetDataByNumVenda(cmbProduto.Text);
+            DataTable produto = pc_produtoTableAdapter.GetDataByDescricao(cmbProduto.Text);
             precotemp = 0;
             foreach (DataRow row in produto.Rows)
             {
@@ -144,7 +150,7 @@ namespace WfaVendas
             incluir = true;
             habilitaCampos(this, true);
             habilitaBotoes(this, false);
-            txtNumvenda.Focus();
+            cmbCliente.Focus();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -183,13 +189,13 @@ namespace WfaVendas
             {
                 if (incluir)
                 {
-                    pc_clientesTableAdapter.Insert((Int32)cmbCliente.SelectedValue, dtpVenda.Value, dtpEntrega.Value, txtObs.Text);
+                    pc_vendaTableAdapter.Insert((Int32)cmbCliente.SelectedValue, dtpVenda.Value, dtpEntrega.Value, txtObs.Text);
                     MessageBox.Show("Incluído com sucesso!", "Aviso:", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
                 else
                 {
-                    pc_clientesTableAdapter.Update((Int32)cmbCliente.SelectedValue, dtpVenda.Value, dtpEntrega.Value, txtObs.Text, Convert.ToInt32(txtNumvenda.Text));
+                    pc_vendaTableAdapter.Update((Int32)cmbCliente.SelectedValue, dtpVenda.Value, dtpEntrega.Value, txtObs.Text, Convert.ToInt32(txtNumvenda.Text));
                     MessageBox.Show(null, "Alterado com sucesso!", "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 FrmVendas_Load(null, null);
@@ -275,7 +281,9 @@ namespace WfaVendas
                 {
                     if(MessageBox.Show(null, "Deseja mesmo excluir o ITEM selecionado?", "Atenção:", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
                     {
-                        pc_itemvendaTableAdapter.Delete(Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString(), Convert.ToInt32(dgvVendas[0, dgvItens.CurrentRow.Index].Value.ToString())));
+                        pc_itemvendaTableAdapter.DeleteTodos(
+                            Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString(), 
+                            Convert.ToInt32(dgvVendas[0, dgvItens.CurrentRow.Index].Value.ToString())));
                         dgvVendas_SelectionChanged(null, null);
                         MessageBox.Show(null, "Apagado com sucesso!", "Exclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -328,7 +336,7 @@ namespace WfaVendas
                     }
                     else
                     {
-                        pc_itemvendaTableAdapter.FillByDescricao(this.lP2DataSet.pc_itemvenda, Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()), "%" + cmbProduto.Text + "%");
+                        pc_itemvendaTableAdapter.FillByDescricao(this.lP2DataSet.pc_itemvenda, "%" + cmbProduto.Text + "%", Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
                         btnCancelarItem_Click(null, null);
                     }
                 }
@@ -357,7 +365,7 @@ namespace WfaVendas
             {
                 if(incluirItem)
                 {
-                    pc_itemvendaTableAdapter.Insert((Int32)cmbProduto.SelectedValue, (Int32)nudQuantidade.Value, precotemp);
+                    pc_itemvendaTableAdapter.Insert(Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()), (Int32)cmbProduto.SelectedValue, (Int32)nudQuantidade.Value, precotemp);
                     MessageBox.Show(null, "Incluido com sucesso!", "Inclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else

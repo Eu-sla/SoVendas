@@ -73,10 +73,16 @@
     <Compile Include="FrmVendas.Designer.cs">
       <DependentUpon>FrmVendas.cs</DependentUpon>
     </Compile>
+    <Compile Include="LP2DataSet.cs">
+      <DependentUpon>LP2DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="LP2DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LP2DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="LP2DataSet1.cs">
+      <DependentUpon>LP2DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="LP2DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>

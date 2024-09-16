@@ -159,6 +159,7 @@ namespace WfaVendas
                 btnPesquisar.Enabled = true;
                 btnGravar.Enabled = false;
                 btnCancelar.Enabled = false;
+                btnLimpar.Enabled = false;
                 MessageBox.Show(null, "Digite o nome desejado ou " + "\nparte dele.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -220,6 +221,11 @@ namespace WfaVendas
                 }
             }
 
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            FrmCadCliente_Load(null, null);
         }
     }
 }
