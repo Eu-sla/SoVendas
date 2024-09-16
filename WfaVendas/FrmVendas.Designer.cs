@@ -78,6 +78,16 @@
             this.btnTodos = new System.Windows.Forms.Button();
             this.pc_produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pc_produtoTableAdapter1 = new WfaVendas.LP2DataSetTableAdapters.pc_produtoTableAdapter();
+            this.lP2DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pcclientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pc_clientesTableAdapter = new WfaVendas.LP2DataSetTableAdapters.pc_clientesTableAdapter();
+            this.dgvItens = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvVendas = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,14 +95,6 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvItens = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lP2DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pcclientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pc_clientesTableAdapter = new WfaVendas.LP2DataSetTableAdapters.pc_clientesTableAdapter();
             lblNumVenda = new System.Windows.Forms.Label();
             datavendaLabel = new System.Windows.Forms.Label();
             dataentregaLabel = new System.Windows.Forms.Label();
@@ -113,10 +115,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.lP2DataSet1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pc_produtoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lP2DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcclientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNumVenda
@@ -345,7 +347,6 @@
             // 
             // txtNumvenda
             // 
-            this.txtNumvenda.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_vendaBindingSource, "numvenda", true));
             this.txtNumvenda.Enabled = false;
             this.txtNumvenda.Location = new System.Drawing.Point(166, 41);
             this.txtNumvenda.Name = "txtNumvenda";
@@ -362,6 +363,7 @@
             this.dtpVenda.Name = "dtpVenda";
             this.dtpVenda.Size = new System.Drawing.Size(151, 20);
             this.dtpVenda.TabIndex = 20;
+            this.dtpVenda.Value = new System.DateTime(2024, 9, 15, 0, 0, 0, 0);
             // 
             // dtpEntrega
             // 
@@ -372,10 +374,10 @@
             this.dtpEntrega.Name = "dtpEntrega";
             this.dtpEntrega.Size = new System.Drawing.Size(144, 20);
             this.dtpEntrega.TabIndex = 22;
+            this.dtpEntrega.Value = new System.DateTime(2024, 9, 18, 0, 0, 0, 0);
             // 
             // txtObs
             // 
-            this.txtObs.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_vendaBindingSource, "obs", true));
             this.txtObs.Enabled = false;
             this.txtObs.Location = new System.Drawing.Point(122, 93);
             this.txtObs.Multiline = true;
@@ -410,7 +412,7 @@
             // 
             // txtSubtotal
             // 
-            this.txtSubtotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_itemvendaBindingSource, "precounit", true));
+            this.txtSubtotal.Enabled = false;
             this.txtSubtotal.Location = new System.Drawing.Point(502, 66);
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.ReadOnly = true;
@@ -438,7 +440,7 @@
             // 
             // txtPrecounit
             // 
-            this.txtPrecounit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_itemvendaBindingSource, "precounit", true));
+            this.txtPrecounit.Enabled = false;
             this.txtPrecounit.Location = new System.Drawing.Point(361, 68);
             this.txtPrecounit.Name = "txtPrecounit";
             this.txtPrecounit.ReadOnly = true;
@@ -487,7 +489,7 @@
             // 
             // nudQuantidade
             // 
-            this.nudQuantidade.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.pc_itemvendaBindingSource, "quantidade", true));
+            this.nudQuantidade.Enabled = false;
             this.nudQuantidade.Location = new System.Drawing.Point(207, 67);
             this.nudQuantidade.Maximum = new decimal(new int[] {
             1000,
@@ -540,8 +542,9 @@
             this.cmbProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbProduto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbProduto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_itemvendaBindingSource, "codpro", true));
-            this.cmbProduto.DataSource = this.pcprodutoBindingSource;
-            this.cmbProduto.DisplayMember = "codpro";
+            this.cmbProduto.DataSource = this.pc_itemvendaBindingSource;
+            this.cmbProduto.DisplayMember = "descricao";
+            this.cmbProduto.Enabled = false;
             this.cmbProduto.FormattingEnabled = true;
             this.cmbProduto.Location = new System.Drawing.Point(61, 67);
             this.cmbProduto.Name = "cmbProduto";
@@ -569,7 +572,7 @@
             this.panel1.Controls.Add(label2);
             this.panel1.Controls.Add(this.txtTotal);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 528);
+            this.panel1.Location = new System.Drawing.Point(0, 542);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(808, 48);
             this.panel1.TabIndex = 26;
@@ -597,9 +600,9 @@
             // 
             // cmbCliente
             // 
-            this.cmbCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_vendaBindingSource, "codcli", true));
+            this.cmbCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCliente.DataSource = this.pcclientesBindingSource;
-            this.cmbCliente.DisplayMember = "codcli";
+            this.cmbCliente.DisplayMember = "nome";
             this.cmbCliente.Enabled = false;
             this.cmbCliente.FormattingEnabled = true;
             this.cmbCliente.Location = new System.Drawing.Point(480, 41);
@@ -631,102 +634,6 @@
             // 
             this.pc_produtoTableAdapter1.ClearBeforeFill = true;
             // 
-            // dgvVendas
-            // 
-            this.dgvVendas.AutoGenerateColumns = false;
-            this.dgvVendas.BackgroundColor = System.Drawing.Color.Bisque;
-            this.dgvVendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn10});
-            this.dgvVendas.DataSource = this.pc_itemvendaBindingSource;
-            this.dgvVendas.Location = new System.Drawing.Point(12, 139);
-            this.dgvVendas.Name = "dgvVendas";
-            this.dgvVendas.Size = new System.Drawing.Size(776, 133);
-            this.dgvVendas.TabIndex = 28;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "numvenda";
-            this.dataGridViewTextBoxColumn1.HeaderText = "numvenda";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "codpro";
-            this.dataGridViewTextBoxColumn2.HeaderText = "codpro";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "quantidade";
-            this.dataGridViewTextBoxColumn3.HeaderText = "quantidade";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "precounit";
-            this.dataGridViewTextBoxColumn4.HeaderText = "precounit";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "descricao";
-            this.dataGridViewTextBoxColumn5.HeaderText = "descricao";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "Subtotal";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Subtotal";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dgvItens
-            // 
-            this.dgvItens.AutoGenerateColumns = false;
-            this.dgvItens.BackgroundColor = System.Drawing.Color.Bisque;
-            this.dgvItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvItens.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9});
-            this.dgvItens.DataSource = this.pc_produtoBindingSource;
-            this.dgvItens.Location = new System.Drawing.Point(17, 393);
-            this.dgvItens.Name = "dgvItens";
-            this.dgvItens.Size = new System.Drawing.Size(771, 129);
-            this.dgvItens.TabIndex = 28;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "codpro";
-            this.dataGridViewTextBoxColumn6.HeaderText = "codpro";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "descricao";
-            this.dataGridViewTextBoxColumn7.HeaderText = "descricao";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "quantidade";
-            this.dataGridViewTextBoxColumn8.HeaderText = "quantidade";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "precounit";
-            this.dataGridViewTextBoxColumn9.HeaderText = "precounit";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
             // lP2DataSetBindingSource
             // 
             this.lP2DataSetBindingSource.DataSource = this.lP2DataSet;
@@ -741,14 +648,130 @@
             // 
             this.pc_clientesTableAdapter.ClearBeforeFill = true;
             // 
+            // dgvItens
+            // 
+            this.dgvItens.AllowUserToAddRows = false;
+            this.dgvItens.AllowUserToDeleteRows = false;
+            this.dgvItens.AutoGenerateColumns = false;
+            this.dgvItens.BackgroundColor = System.Drawing.Color.Bisque;
+            this.dgvItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvItens.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12});
+            this.dgvItens.DataSource = this.pc_itemvendaBindingSource;
+            this.dgvItens.Location = new System.Drawing.Point(12, 393);
+            this.dgvItens.Name = "dgvItens";
+            this.dgvItens.ReadOnly = true;
+            this.dgvItens.Size = new System.Drawing.Size(776, 129);
+            this.dgvItens.TabIndex = 28;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "numvenda";
+            this.dataGridViewTextBoxColumn6.HeaderText = "numvenda";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "codpro";
+            this.dataGridViewTextBoxColumn7.HeaderText = "codpro";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "quantidade";
+            this.dataGridViewTextBoxColumn8.HeaderText = "quantidade";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "precounit";
+            this.dataGridViewTextBoxColumn9.HeaderText = "precounit";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "descricao";
+            this.dataGridViewTextBoxColumn11.HeaderText = "descricao";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "Subtotal";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Subtotal";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // dgvVendas
+            // 
+            this.dgvVendas.AllowUserToAddRows = false;
+            this.dgvVendas.AllowUserToDeleteRows = false;
+            this.dgvVendas.AutoGenerateColumns = false;
+            this.dgvVendas.BackgroundColor = System.Drawing.Color.Bisque;
+            this.dgvVendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn10});
+            this.dgvVendas.DataSource = this.pc_vendaBindingSource;
+            this.dgvVendas.Location = new System.Drawing.Point(17, 139);
+            this.dgvVendas.Name = "dgvVendas";
+            this.dgvVendas.ReadOnly = true;
+            this.dgvVendas.Size = new System.Drawing.Size(771, 133);
+            this.dgvVendas.TabIndex = 28;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "numvenda";
+            this.dataGridViewTextBoxColumn1.HeaderText = "numvenda";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "codcli";
+            this.dataGridViewTextBoxColumn2.HeaderText = "codcli";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "datavenda";
+            this.dataGridViewTextBoxColumn3.HeaderText = "datavenda";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "dataentrega";
+            this.dataGridViewTextBoxColumn4.HeaderText = "dataentrega";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "obs";
+            this.dataGridViewTextBoxColumn5.HeaderText = "obs";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "nome";
+            this.dataGridViewTextBoxColumn10.HeaderText = "nome";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
             // FrmVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSalmon;
-            this.ClientSize = new System.Drawing.Size(808, 576);
-            this.Controls.Add(this.dgvItens);
+            this.ClientSize = new System.Drawing.Size(808, 590);
             this.Controls.Add(this.dgvVendas);
+            this.Controls.Add(this.dgvItens);
             this.Controls.Add(this.btnTodos);
             this.Controls.Add(codcliLabel);
             this.Controls.Add(this.cmbCliente);
@@ -769,8 +792,10 @@
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnIncluir);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FrmVendas";
-            this.Text = "FrmVendas";
+            this.Text = "Cadastro de Vendas";
             this.Load += new System.EventHandler(this.FrmVendas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lP2DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pc_vendaBindingSource)).EndInit();
@@ -783,10 +808,10 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pc_produtoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lP2DataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcclientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -832,6 +857,16 @@
         private System.Windows.Forms.Button btnTodos;
         private System.Windows.Forms.BindingSource pc_produtoBindingSource;
         private LP2DataSetTableAdapters.pc_produtoTableAdapter pc_produtoTableAdapter1;
+        private System.Windows.Forms.BindingSource lP2DataSetBindingSource;
+        private System.Windows.Forms.BindingSource pcclientesBindingSource;
+        private LP2DataSetTableAdapters.pc_clientesTableAdapter pc_clientesTableAdapter;
+        private System.Windows.Forms.DataGridView dgvItens;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridView dgvVendas;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -839,13 +874,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridView dgvItens;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.BindingSource lP2DataSetBindingSource;
-        private System.Windows.Forms.BindingSource pcclientesBindingSource;
-        private LP2DataSetTableAdapters.pc_clientesTableAdapter pc_clientesTableAdapter;
     }
 }
