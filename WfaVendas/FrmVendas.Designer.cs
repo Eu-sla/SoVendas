@@ -39,6 +39,7 @@
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label codcliLabel;
+            System.Windows.Forms.Label label3;
             this.btnSair = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
@@ -84,6 +85,7 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
             this.pc_produtoTableAdapter = new WfaVendas.LP2DataSet1TableAdapters.pc_produtoTableAdapter();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             numvendaLabel = new System.Windows.Forms.Label();
             datavendaLabel = new System.Windows.Forms.Label();
             dataentregaLabel = new System.Windows.Forms.Label();
@@ -94,6 +96,7 @@
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             codcliLabel = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.lP2DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pc_vendaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
@@ -129,9 +132,9 @@
             dataentregaLabel.AutoSize = true;
             dataentregaLabel.Location = new System.Drawing.Point(407, 70);
             dataentregaLabel.Name = "dataentregaLabel";
-            dataentregaLabel.Size = new System.Drawing.Size(67, 13);
+            dataentregaLabel.Size = new System.Drawing.Size(88, 13);
             dataentregaLabel.TabIndex = 21;
-            dataentregaLabel.Text = "dataentrega:";
+            dataentregaLabel.Text = "Data da Entrega:";
             // 
             // obsLabel
             // 
@@ -147,36 +150,36 @@
             codproLabel.AutoSize = true;
             codproLabel.Location = new System.Drawing.Point(58, 50);
             codproLabel.Name = "codproLabel";
-            codproLabel.Size = new System.Drawing.Size(43, 13);
+            codproLabel.Size = new System.Drawing.Size(47, 13);
             codproLabel.TabIndex = 0;
-            codproLabel.Text = "codpro:";
+            codproLabel.Text = "Produto:";
             // 
             // quantidadeLabel
             // 
             quantidadeLabel.AutoSize = true;
             quantidadeLabel.Location = new System.Drawing.Point(204, 50);
             quantidadeLabel.Name = "quantidadeLabel";
-            quantidadeLabel.Size = new System.Drawing.Size(63, 13);
+            quantidadeLabel.Size = new System.Drawing.Size(65, 13);
             quantidadeLabel.TabIndex = 2;
-            quantidadeLabel.Text = "quantidade:";
+            quantidadeLabel.Text = "Quantidade:";
             // 
             // precounitLabel
             // 
             precounitLabel.AutoSize = true;
             precounitLabel.Location = new System.Drawing.Point(358, 50);
             precounitLabel.Name = "precounitLabel";
-            precounitLabel.Size = new System.Drawing.Size(54, 13);
+            precounitLabel.Size = new System.Drawing.Size(77, 13);
             precounitLabel.TabIndex = 4;
-            precounitLabel.Text = "precounit:";
+            precounitLabel.Text = "Preço Unitário:";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Location = new System.Drawing.Point(499, 50);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(47, 13);
+            label1.Size = new System.Drawing.Size(49, 13);
             label1.TabIndex = 33;
-            label1.Text = "biubtotal";
+            label1.Text = "Subtotal:";
             // 
             // label2
             // 
@@ -281,6 +284,7 @@
             this.btnIncluir.TabIndex = 8;
             this.btnIncluir.Text = "&Incluir";
             this.btnIncluir.UseVisualStyleBackColor = false;
+            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
             // lP2DataSet
             // 
@@ -315,6 +319,7 @@
             this.dgvVendas.AllowUserToDeleteRows = false;
             this.dgvVendas.AllowUserToResizeRows = false;
             this.dgvVendas.AutoGenerateColumns = false;
+            this.dgvVendas.BackgroundColor = System.Drawing.Color.LightCoral;
             this.dgvVendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -382,6 +387,7 @@
             // 
             this.dtpVenda.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.pc_vendaBindingSource, "datavenda", true));
             this.dtpVenda.Enabled = false;
+            this.dtpVenda.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpVenda.Location = new System.Drawing.Point(166, 66);
             this.dtpVenda.Name = "dtpVenda";
             this.dtpVenda.Size = new System.Drawing.Size(151, 20);
@@ -391,6 +397,7 @@
             // 
             this.dtpEntrega.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.pc_vendaBindingSource, "dataentrega", true));
             this.dtpEntrega.Enabled = false;
+            this.dtpEntrega.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpEntrega.Location = new System.Drawing.Point(480, 66);
             this.dtpEntrega.Name = "dtpEntrega";
             this.dtpEntrega.Size = new System.Drawing.Size(144, 20);
@@ -408,6 +415,7 @@
             // 
             // grpItens
             // 
+            this.grpItens.BackColor = System.Drawing.SystemColors.ControlLight;
             this.grpItens.Controls.Add(label1);
             this.grpItens.Controls.Add(this.txtSubtotal);
             this.grpItens.Controls.Add(precounitLabel);
@@ -422,7 +430,8 @@
             this.grpItens.Controls.Add(codproLabel);
             this.grpItens.Controls.Add(this.btnIncluirItem);
             this.grpItens.Controls.Add(this.cmbProduto);
-            this.grpItens.Location = new System.Drawing.Point(78, 263);
+            this.grpItens.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.grpItens.Location = new System.Drawing.Point(78, 278);
             this.grpItens.Name = "grpItens";
             this.grpItens.Size = new System.Drawing.Size(657, 109);
             this.grpItens.TabIndex = 25;
@@ -445,7 +454,7 @@
             // 
             // btnCancelarItem
             // 
-            this.btnCancelarItem.BackColor = System.Drawing.Color.SeaShell;
+            this.btnCancelarItem.BackColor = System.Drawing.Color.Snow;
             this.btnCancelarItem.Enabled = false;
             this.btnCancelarItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarItem.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -467,7 +476,7 @@
             // 
             // btnGravarItem
             // 
-            this.btnGravarItem.BackColor = System.Drawing.Color.SeaShell;
+            this.btnGravarItem.BackColor = System.Drawing.Color.Snow;
             this.btnGravarItem.Enabled = false;
             this.btnGravarItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGravarItem.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -480,7 +489,7 @@
             // 
             // btnPesquisarItem
             // 
-            this.btnPesquisarItem.BackColor = System.Drawing.Color.SeaShell;
+            this.btnPesquisarItem.BackColor = System.Drawing.Color.Snow;
             this.btnPesquisarItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPesquisarItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnPesquisarItem.Location = new System.Drawing.Point(341, 19);
@@ -492,7 +501,7 @@
             // 
             // btnExcluirItem
             // 
-            this.btnExcluirItem.BackColor = System.Drawing.Color.SeaShell;
+            this.btnExcluirItem.BackColor = System.Drawing.Color.Snow;
             this.btnExcluirItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluirItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnExcluirItem.Location = new System.Drawing.Point(242, 19);
@@ -528,7 +537,7 @@
             // 
             // btnAlterarItem
             // 
-            this.btnAlterarItem.BackColor = System.Drawing.Color.SeaShell;
+            this.btnAlterarItem.BackColor = System.Drawing.Color.Snow;
             this.btnAlterarItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterarItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAlterarItem.Location = new System.Drawing.Point(143, 19);
@@ -540,7 +549,7 @@
             // 
             // btnIncluirItem
             // 
-            this.btnIncluirItem.BackColor = System.Drawing.Color.SeaShell;
+            this.btnIncluirItem.BackColor = System.Drawing.Color.Snow;
             this.btnIncluirItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIncluirItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnIncluirItem.Location = new System.Drawing.Point(44, 19);
@@ -577,7 +586,10 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.MistyRose;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(label3);
             this.panel1.Controls.Add(label2);
             this.panel1.Controls.Add(this.txtTotal);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -601,6 +613,7 @@
             this.dgvItens.AllowUserToDeleteRows = false;
             this.dgvItens.AllowUserToResizeRows = false;
             this.dgvItens.AutoGenerateColumns = false;
+            this.dgvItens.BackgroundColor = System.Drawing.Color.LightCoral;
             this.dgvItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItens.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn6,
@@ -608,7 +621,7 @@
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9});
             this.dgvItens.DataSource = this.pc_itemvendaBindingSource;
-            this.dgvItens.Location = new System.Drawing.Point(12, 389);
+            this.dgvItens.Location = new System.Drawing.Point(12, 399);
             this.dgvItens.MultiSelect = false;
             this.dgvItens.Name = "dgvItens";
             this.dgvItens.ReadOnly = true;
@@ -659,10 +672,30 @@
             // 
             this.pc_produtoTableAdapter.ClearBeforeFill = true;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(647, 15);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(34, 13);
+            label3.TabIndex = 35;
+            label3.Text = "Total:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_itemvendaBindingSource, "precounit", true));
+            this.textBox1.ForeColor = System.Drawing.Color.Tomato;
+            this.textBox1.Location = new System.Drawing.Point(687, 12);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 35;
+            // 
             // FrmVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(804, 594);
             this.Controls.Add(codcliLabel);
             this.Controls.Add(this.cmbCliente);
@@ -753,5 +786,6 @@
         private LP2DataSet1 lP2DataSet1;
         private System.Windows.Forms.BindingSource pcprodutoBindingSource;
         private LP2DataSet1TableAdapters.pc_produtoTableAdapter pc_produtoTableAdapter;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

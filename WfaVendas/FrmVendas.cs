@@ -16,26 +16,10 @@ namespace WfaVendas
         bool exibir = false;
         bool incluirItem = false;
         bool exibirItem = false;
-        double precotemp;
+        double precotemp = 0;
         public FrmVendas()
         {
             InitializeComponent();
-        }
-
-        private void pc_clientesBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.pc_clientesBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.lP2DataSet);
-
-        }
-
-        private void pc_vendaBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.pc_vendaBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.lP2DataSet);
-
         }
 
         private void FrmVendas_Load(object sender, EventArgs e)
@@ -53,7 +37,7 @@ namespace WfaVendas
 
         }
 
-        private void HabilitaCampos(Control container, bool hab)
+        private void habilitaCampos(Control container, bool hab)
         {
             foreach(Control control in container.Controls)
             {
@@ -66,7 +50,7 @@ namespace WfaVendas
             }
         }
 
-        private void HabilitaBotoes(Control container, bool hab)
+        private void habilitaBotoes(Control container, bool hab)
         {
             foreach (Control control in container.Controls)
             {
@@ -92,12 +76,47 @@ namespace WfaVendas
                         ((TextBox)item).Text = "R$ 0.00";
                     }
                 }
+                else if(item is NumericUpDown)
+                {
+                    ((NumericUpDown)item).Value = 1;
+                }else if(item is MaskedTextBox)
+                {
+                    ((MaskedTextBox)item).Clear();
+                }else if(item is ComboBox)
+                {
+                    if(((ComboBox)item).Items.Count > 0){
+                        ((ComboBox)item).SelectedIndex = 0
+                    }
+                }else if(item is DateTimePicker)
+                {
+                    ((DateTimePicker)item).Value = DateTime.Now;
+                }
             }
+
         }
 
         private void dgvVendas_SelectionChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (dgvVendas > 0)
+                {
+                    this.pc_itemvendaTableAdapter.FillByNumVenda(this.vendasDataSet.pc_itemvenda, Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
+                    if (dgvItens.RowCount > 0)
+                    {
+                        double total = (Double)pc_itemvendaTableAdapter.TotalVenda(
+                           Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
+                        txtTotal.Text = total.ToString("R$ #,###,##0.00");
+                    } else
+                    {
+                        txtTotal.Text = "R$ 0,00";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(null, "Ocorreu um erro:\n" + ex.Message, "Erro ao acessar os Itens da VENDA:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,6 +127,14 @@ namespace WfaVendas
         private void nudQuantidade_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnIncluir_Click(object sender, EventArgs e)
+        {
+            incluir = true;
+            habilitaCampos(this, true);
+            habilitaBotoes(this, false);
+            txtNumvenda.Focus();
         }
     }
 }

@@ -3468,9 +3468,8 @@ SELECT numvenda, codpro, quantidade, precounit FROM pc_itemvenda WHERE (codpro =
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_precounit", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "precounit", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [DS230216].[pc_produto] ([descricao], [quantidade], [precounit]) VALU" +
-                "ES (@descricao, @quantidade, @precounit);\r\nSELECT codpro, descricao, quantidade," +
-                " precounit FROM pc_produto WHERE (codpro = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO pc_produto (descricao, quantidade, precounit)\nVALUES   (@descricao,@q" +
+                "uantidade,@precounit);";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@descricao", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "descricao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantidade", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantidade", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
