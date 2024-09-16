@@ -97,9 +97,11 @@ namespace WfaVendas
                 }
                 else
                 {
-                    //editar
+                    pc_clientesTableAdapter.Update(txtNome.Text, txtEndereco.Text, txtCidade.Text, txtBairro.Text, mskUf.Text,
+                        mskCep.Text, mskTelefone.Text, dtpDatanasc.Value, Convert.ToInt32(txtCodcli.Text));
                 }
                 FrmCadCliente_Load(null, null);
+                btnCancelar_Click(null, null);
             }
             catch (Exception ex)
             {
@@ -142,14 +144,14 @@ namespace WfaVendas
             catch (Exception ex)
             {
                 MessageBox.Show(null, "Ocorreu um erro:\n" + ex.Message, "Erro:", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
+
             }
 
-}
+        }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            if(txtNome.Enabled == false)
+            if (txtNome.Enabled == false)
             {
                 txtNome.Enabled = true;
                 txtNome.Focus();
@@ -168,7 +170,7 @@ namespace WfaVendas
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            if(dgvClientes.SelectedRows.Count > 0)
+            if (dgvClientes.SelectedRows.Count > 0)
             {
                 HabilitaBotoes(false);
                 HabilitaCampos(true);
@@ -185,13 +187,42 @@ namespace WfaVendas
                 txtNome.Focus();
 
             }
+            else
+            {
+                MessageBox.Show(null, "Selecione um cliente primeiro!", "Erro:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvClientes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            
+            if (this.dgvClientes.Columns[e.ColumnIndex].DataPropertyName == "Telefone" || this.dgvClientes.Columns[e.ColumnIndex].DataPropertyName == "Telefone2")
+            {
+                if (e.Value != null)
+                {
+                    string stringValue = (string)e.Value;
+                    if (stringValue != "")
+                    {
+                        stringValue = "(" + stringValue.Substring(0, 2) + ")" + stringValue.Substring(2, 5) + "-" + stringValue.Substring(7, 4);
+                        e.Value = stringValue;
+                    }
+                }
+            }
+            else if (this.dgvClientes.Columns[e.ColumnIndex].DataPropertyName == "CEP")
+            {
+                if (e.Value != null)
+                {
+                    string stringValue = (string)e.Value;
+                    if (stringValue != "")
+                    {
+                        stringValue = stringValue.Substring(0, 5) + "-" + stringValue.Substring(5, 3);
+                        e.Value = stringValue;
+                    }
+                }
+            }
+
         }
-    } }
+    }
+}
 
 //TODO ->
 //DPS DO BOTAO GRAVAR, OS BOTOES VOLTAM AONORMAL

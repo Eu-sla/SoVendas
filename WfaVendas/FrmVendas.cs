@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WfaVendas.LP2DataSetTableAdapters;
 
 namespace WfaVendas
 {
@@ -17,6 +18,7 @@ namespace WfaVendas
         bool incluirItem = false;
         bool exibirItem = false;
         double precotemp = 0;
+
         public FrmVendas()
         {
             InitializeComponent();
@@ -85,7 +87,7 @@ namespace WfaVendas
                 }else if(item is ComboBox)
                 {
                     if(((ComboBox)item).Items.Count > 0){
-                        ((ComboBox)item).SelectedIndex = 0
+                        ((ComboBox)item).SelectedIndex = 0;
                     }
                 }else if(item is DateTimePicker)
                 {
@@ -99,13 +101,12 @@ namespace WfaVendas
         {
             try
             {
-                if (dgvVendas > 0)
+                if (dgvVendas.SelectedRows.Count > 0)
                 {
-                    this.pc_itemvendaTableAdapter.FillByNumVenda(this.vendasDataSet.pc_itemvenda, Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
+                    this.pc_itemvendaTableAdapter.FillByNumVenda(this.LP2DataSet.pc_itemvenda, Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
                     if (dgvItens.RowCount > 0)
                     {
-                        double total = (Double)pc_itemvendaTableAdapter.TotalVenda(
-                           Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
+                        double total = (Double)pc_itemvendaTableAdapter.TotalVenda(Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
                         txtTotal.Text = total.ToString("R$ #,###,##0.00");
                     } else
                     {
@@ -121,12 +122,21 @@ namespace WfaVendas
 
         private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            DataTable produto = pc_produtoTableAdapter.GetDataBy(cmbProduto.Text);
+            precotemp = 0;
+            foreach (DataRow row in produto.Rows)
+            {
+                precotemp = Convert.ToDouble(row["precounit"].ToString());
+            }
+            nudQuantidade.Value = 1;
+            txtPrecounit.Text = precotemp.ToString("R$ #,###,##0.00");
+            txtSubtotal.Text = precotemp.ToString("R$ #,###,##0.00");
         }
 
         private void nudQuantidade_ValueChanged(object sender, EventArgs e)
         {
-
+            double subTotal = (Int32)nudQuantidade.Value * precotemp;
+            txtSubtotal.Text = subTotal.ToString("R$ #,###,##0.00");
         }
 
         private void btnIncluir_Click(object sender, EventArgs e)
@@ -135,6 +145,239 @@ namespace WfaVendas
             habilitaCampos(this, true);
             habilitaBotoes(this, false);
             txtNumvenda.Focus();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvVendas.SelectedRows.Count > 0)
+                {
+                    if (MessageBox.Show(null, "Deseja mesmo excluir a venda selecionada?", "Atenção:", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        pc_itemvendaTableAdapter.DeleteTodos(Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
+                        pc_vendaTableAdapter.Delete(Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
+                        FrmVendas_Load(null, null);
+                        MessageBox.Show(null, "Apagado com sucesso!", "Exclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show(null, "Selecione uma venda primeiro!", "Erro ao excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(null, "Ocorreu um erro:\n" + ex.Message, "Erro:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (incluir)
+                {
+                    pc_clientesTableAdapter.Insert((Int32)cmbCliente.SelectedValue, dtpVenda.Value, dtpEntrega.Value, txtObs.Text);
+                    MessageBox.Show("Incluído com sucesso!", "Aviso:", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    pc_clientesTableAdapter.Update((Int32)cmbCliente.SelectedValue, dtpVenda.Value, dtpEntrega.Value, txtObs.Text, Convert.ToInt32(txtNumvenda.Text));
+                    MessageBox.Show(null, "Alterado com sucesso!", "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                FrmVendas_Load(null, null);
+                btnCancelar_Click(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro :\n" + ex.Message, "Erro:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            incluir = false;
+            habilitaBotoes(this, true);
+            habilitaCampos(this, false);
+            habilitaBotoes(grpItens, true);
+            habilitaCampos(grpItens, false);
+            LimpaCampos(this);
+            LimpaCampos(grpItens);
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            if(dgvVendas.SelectedRows.Count >0)
+            {
+                incluir = false;
+                habilitaBotoes(this, false);
+                habilitaCampos(this, true);
+                txtNumvenda.Enabled = false;
+                txtNumvenda.Text = dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString();
+                cmbCliente.SelectedValue = Convert.ToInt32(dgvVendas[1, dgvVendas.CurrentRow.Index].Value.ToString());
+                dtpVenda.Value = Convert.ToDateTime(dgvVendas[3, dgvVendas.CurrentRow.Index].Value.ToString());
+                dtpEntrega.Value = Convert.ToDateTime(dgvVendas[4, dgvVendas.CurrentRow.Index].Value.ToString());
+                txtObs.Text = dgvVendas[5, dgvVendas.CurrentRow.Index].Value.ToString();
+                cmbCliente.Focus();
+            }
+            else
+            {
+                MessageBox.Show(null, "Selecione uma VENDA primeiro!", "Erro:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            if(cmbCliente.Enabled == false)
+            {
+                cmbCliente.Enabled = true;
+                cmbCliente.Focus ();
+                habilitaBotoes(this, false);
+                btnPesquisar.Enabled = true;
+                btnGravar.Enabled = false;
+                btnCancelar.Enabled = false;
+                MessageBox.Show(null, "Digite o nome do cliente desejado ou" + "\nparte dele", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                pc_vendaTableAdapter.FillByNome(this.lP2DataSet.pc_venda, "%" + cmbCliente.Text + "%");
+                btnCancelar_Click(null, null);
+            }
+        }
+
+        private void btnIncluirItem_Click(object sender, EventArgs e)
+        {
+            incluirItem = true;
+            habilitaCampos(grpItens, true);
+            habilitaBotoes(grpItens, false);
+            cmbProduto_SelectedIndexChanged(null, null);
+            cmbProduto.Focus();
+        }
+
+        private void btnExcluirItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(dgvItens.SelectedRows.Count > 0)
+                {
+                    if(MessageBox.Show(null, "Deseja mesmo excluir o ITEM selecionado?", "Atenção:", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        pc_itemvendaTableAdapter.Delete(Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString(), Convert.ToInt32(dgvVendas[0, dgvItens.CurrentRow.Index].Value.ToString())));
+                        dgvVendas_SelectionChanged(null, null);
+                        MessageBox.Show(null, "Apagado com sucesso!", "Exclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(null, "Selecione um item primeiro!", "Erro ao excluir:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(null, "Ocorreu um erro:\n" + ex.Message, "Erro:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAlterarItem_Click(object sender, EventArgs e)
+        {
+            if(dgvItens.SelectedRows.Count > 0)
+            {
+                incluirItem = false;
+                habilitaBotoes(grpItens, false);
+                habilitaCampos(grpItens, true);
+                cmbProduto.Text = dgvItens[1, dgvItens.CurrentRow.Index].Value.ToString();
+                cmbProduto_SelectedIndexChanged(null, null);
+                nudQuantidade.Value = Convert.ToInt32(dgvItens[2, dgvItens.CurrentRow.Index].Value.ToString());
+                cmbProduto.Focus();
+            }
+            else
+            {
+                MessageBox.Show(null, "Selecione um ITEM primeiro!", "Erro:", MessageBoxButtons.OK, MessageBoxIcon.Error );
+            }
+        }
+
+        private void btnPesquisarItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(dgvItens.RowCount > 0)
+                {
+                    if(cmbProduto.Enabled == false)
+                    {
+                        cmbProduto.Enabled = true;
+                        cmbProduto.Focus();
+                        habilitaBotoes(grpItens, false);
+                        btnPesquisarItem.Enabled = true;
+                        btnGravarItem.Enabled = false;
+                        btnCancelarItem.Enabled = false;
+                        MessageBox.Show(null, "Digite o nome do ITEM desejado ou" + "\nparte dele.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        pc_itemvendaTableAdapter.FillByDescricao(this.lP2DataSet.pc_itemvenda, Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()), "%" + cmbProduto.Text + "%");
+                        btnCancelarItem_Click(null, null);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(null, "Cadastre um item primeiro!", "Erro ao excluir:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(null, "Ocorreu um erro:\n" + ex.Message, "Erro:", MessageBoxButtons.OK, MessageBoxIcon.Error );
+            }
+        }
+
+        private void btnCancelarItem_Click(object sender, EventArgs e)
+        {
+            LimpaCampos(grpItens);
+            habilitaBotoes(grpItens, true);
+            habilitaCampos(grpItens, false);
+            incluirItem = false;
+        }
+
+        private void btnGravarItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(incluirItem)
+                {
+                    pc_itemvendaTableAdapter.Insert((Int32)cmbProduto.SelectedValue, (Int32)nudQuantidade.Value, precotemp);
+                    MessageBox.Show(null, "Incluido com sucesso!", "Inclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    pc_itemvendaTableAdapter.Update((Int32)cmbProduto.SelectedValue, (Int32)nudQuantidade.Value, precotemp, Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()),
+                        Convert.ToInt32(dgvItens[0, dgvItens.CurrentRow.Index].Value.ToString()));
+                    MessageBox.Show(null, "Alterado com sucesso!", "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information );
+                }
+                dgvVendas_SelectionChanged(null, null);
+                btnCancelarItem_Click(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(null, "Ocorreu um erro: " + ex.Message, "Erro:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnTodos_Click(object sender, EventArgs e)
+        {
+            FrmVendas_Load(null, null);
         }
     }
 }

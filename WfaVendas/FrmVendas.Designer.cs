@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label numvendaLabel;
+            System.Windows.Forms.Label lblNumVenda;
             System.Windows.Forms.Label datavendaLabel;
             System.Windows.Forms.Label dataentregaLabel;
             System.Windows.Forms.Label obsLabel;
@@ -77,6 +77,7 @@
             this.pcprodutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lP2DataSet1 = new WfaVendas.LP2DataSet1();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.dgvItens = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,8 +86,8 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
             this.pc_produtoTableAdapter = new WfaVendas.LP2DataSet1TableAdapters.pc_produtoTableAdapter();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            numvendaLabel = new System.Windows.Forms.Label();
+            this.btnTodos = new System.Windows.Forms.Button();
+            lblNumVenda = new System.Windows.Forms.Label();
             datavendaLabel = new System.Windows.Forms.Label();
             dataentregaLabel = new System.Windows.Forms.Label();
             obsLabel = new System.Windows.Forms.Label();
@@ -109,28 +110,31 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
             this.SuspendLayout();
             // 
-            // numvendaLabel
+            // lblNumVenda
             // 
-            numvendaLabel.AutoSize = true;
-            numvendaLabel.Location = new System.Drawing.Point(93, 44);
-            numvendaLabel.Name = "numvendaLabel";
-            numvendaLabel.Size = new System.Drawing.Size(60, 13);
-            numvendaLabel.TabIndex = 15;
-            numvendaLabel.Text = "numvenda:";
+            lblNumVenda.AutoSize = true;
+            lblNumVenda.ForeColor = System.Drawing.SystemColors.Window;
+            lblNumVenda.Location = new System.Drawing.Point(113, 44);
+            lblNumVenda.Name = "lblNumVenda";
+            lblNumVenda.Size = new System.Drawing.Size(41, 13);
+            lblNumVenda.TabIndex = 15;
+            lblNumVenda.Text = "Venda:";
             // 
             // datavendaLabel
             // 
             datavendaLabel.AutoSize = true;
-            datavendaLabel.Location = new System.Drawing.Point(93, 70);
+            datavendaLabel.ForeColor = System.Drawing.SystemColors.Window;
+            datavendaLabel.Location = new System.Drawing.Point(72, 70);
             datavendaLabel.Name = "datavendaLabel";
-            datavendaLabel.Size = new System.Drawing.Size(61, 13);
+            datavendaLabel.Size = new System.Drawing.Size(82, 13);
             datavendaLabel.TabIndex = 19;
-            datavendaLabel.Text = "datavenda:";
+            datavendaLabel.Text = "Data da Venda:";
             // 
             // dataentregaLabel
             // 
             dataentregaLabel.AutoSize = true;
-            dataentregaLabel.Location = new System.Drawing.Point(407, 70);
+            dataentregaLabel.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataentregaLabel.Location = new System.Drawing.Point(386, 70);
             dataentregaLabel.Name = "dataentregaLabel";
             dataentregaLabel.Size = new System.Drawing.Size(88, 13);
             dataentregaLabel.TabIndex = 21;
@@ -139,6 +143,7 @@
             // obsLabel
             // 
             obsLabel.AutoSize = true;
+            obsLabel.ForeColor = System.Drawing.SystemColors.Window;
             obsLabel.Location = new System.Drawing.Point(93, 93);
             obsLabel.Name = "obsLabel";
             obsLabel.Size = new System.Drawing.Size(27, 13);
@@ -193,11 +198,22 @@
             // codcliLabel
             // 
             codcliLabel.AutoSize = true;
-            codcliLabel.Location = new System.Drawing.Point(436, 44);
+            codcliLabel.ForeColor = System.Drawing.SystemColors.HighlightText;
+            codcliLabel.Location = new System.Drawing.Point(432, 44);
             codcliLabel.Name = "codcliLabel";
-            codcliLabel.Size = new System.Drawing.Size(38, 13);
+            codcliLabel.Size = new System.Drawing.Size(42, 13);
             codcliLabel.TabIndex = 26;
-            codcliLabel.Text = "codcli:";
+            codcliLabel.Text = "Cliente:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = System.Drawing.SystemColors.HighlightText;
+            label3.Location = new System.Drawing.Point(647, 15);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(34, 13);
+            label3.TabIndex = 35;
+            label3.Text = "Total:";
             // 
             // btnSair
             // 
@@ -210,6 +226,7 @@
             this.btnSair.TabIndex = 14;
             this.btnSair.Text = "Sai&r";
             this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnCancelar
             // 
@@ -223,6 +240,7 @@
             this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGravar
             // 
@@ -248,6 +266,7 @@
             this.btnPesquisar.TabIndex = 11;
             this.btnPesquisar.Text = "&Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = false;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnExcluir
             // 
@@ -260,6 +279,7 @@
             this.btnExcluir.TabIndex = 10;
             this.btnExcluir.Text = "&Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnAlterar
             // 
@@ -272,6 +292,7 @@
             this.btnAlterar.TabIndex = 9;
             this.btnAlterar.Text = "&Alterar";
             this.btnAlterar.UseVisualStyleBackColor = false;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnIncluir
             // 
@@ -319,7 +340,7 @@
             this.dgvVendas.AllowUserToDeleteRows = false;
             this.dgvVendas.AllowUserToResizeRows = false;
             this.dgvVendas.AutoGenerateColumns = false;
-            this.dgvVendas.BackgroundColor = System.Drawing.Color.LightCoral;
+            this.dgvVendas.BackgroundColor = System.Drawing.Color.Bisque;
             this.dgvVendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -464,6 +485,7 @@
             this.btnCancelarItem.TabIndex = 31;
             this.btnCancelarItem.Text = "&Cancelar";
             this.btnCancelarItem.UseVisualStyleBackColor = false;
+            this.btnCancelarItem.Click += new System.EventHandler(this.btnCancelarItem_Click);
             // 
             // txtPrecounit
             // 
@@ -486,6 +508,7 @@
             this.btnGravarItem.TabIndex = 30;
             this.btnGravarItem.Text = "&Gravar";
             this.btnGravarItem.UseVisualStyleBackColor = false;
+            this.btnGravarItem.Click += new System.EventHandler(this.btnGravarItem_Click);
             // 
             // btnPesquisarItem
             // 
@@ -498,6 +521,7 @@
             this.btnPesquisarItem.TabIndex = 29;
             this.btnPesquisarItem.Text = "&Pesquisar";
             this.btnPesquisarItem.UseVisualStyleBackColor = false;
+            this.btnPesquisarItem.Click += new System.EventHandler(this.btnPesquisarItem_Click);
             // 
             // btnExcluirItem
             // 
@@ -510,6 +534,7 @@
             this.btnExcluirItem.TabIndex = 28;
             this.btnExcluirItem.Text = "&Excluir";
             this.btnExcluirItem.UseVisualStyleBackColor = false;
+            this.btnExcluirItem.Click += new System.EventHandler(this.btnExcluirItem_Click);
             // 
             // nudQuantidade
             // 
@@ -546,6 +571,7 @@
             this.btnAlterarItem.TabIndex = 27;
             this.btnAlterarItem.Text = "&Alterar";
             this.btnAlterarItem.UseVisualStyleBackColor = false;
+            this.btnAlterarItem.Click += new System.EventHandler(this.btnAlterarItem_Click);
             // 
             // btnIncluirItem
             // 
@@ -558,6 +584,7 @@
             this.btnIncluirItem.TabIndex = 26;
             this.btnIncluirItem.Text = "&Incluir";
             this.btnIncluirItem.UseVisualStyleBackColor = false;
+            this.btnIncluirItem.Click += new System.EventHandler(this.btnIncluirItem_Click);
             // 
             // cmbProduto
             // 
@@ -586,7 +613,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.MistyRose;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(label3);
@@ -597,6 +624,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(804, 48);
             this.panel1.TabIndex = 26;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_itemvendaBindingSource, "precounit", true));
+            this.textBox1.ForeColor = System.Drawing.Color.Tomato;
+            this.textBox1.Location = new System.Drawing.Point(687, 12);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 35;
+            this.textBox1.Text = "R$ 0,00";
             // 
             // txtTotal
             // 
@@ -613,7 +652,7 @@
             this.dgvItens.AllowUserToDeleteRows = false;
             this.dgvItens.AllowUserToResizeRows = false;
             this.dgvItens.AutoGenerateColumns = false;
-            this.dgvItens.BackgroundColor = System.Drawing.Color.LightCoral;
+            this.dgvItens.BackgroundColor = System.Drawing.Color.Bisque;
             this.dgvItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItens.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn6,
@@ -672,37 +711,29 @@
             // 
             this.pc_produtoTableAdapter.ClearBeforeFill = true;
             // 
-            // label3
+            // btnTodos
             // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(647, 15);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(34, 13);
-            label3.TabIndex = 35;
-            label3.Text = "Total:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_itemvendaBindingSource, "precounit", true));
-            this.textBox1.ForeColor = System.Drawing.Color.Tomato;
-            this.textBox1.Location = new System.Drawing.Point(687, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 35;
+            this.btnTodos.Location = new System.Drawing.Point(702, 125);
+            this.btnTodos.Name = "btnTodos";
+            this.btnTodos.Size = new System.Drawing.Size(75, 23);
+            this.btnTodos.TabIndex = 28;
+            this.btnTodos.Text = "Rese&tar";
+            this.btnTodos.UseVisualStyleBackColor = true;
+            this.btnTodos.Click += new System.EventHandler(this.btnTodos_Click);
             // 
             // FrmVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Linen;
+            this.BackColor = System.Drawing.Color.DarkSalmon;
             this.ClientSize = new System.Drawing.Size(804, 594);
+            this.Controls.Add(this.btnTodos);
             this.Controls.Add(codcliLabel);
             this.Controls.Add(this.cmbCliente);
             this.Controls.Add(this.dgvItens);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.grpItens);
-            this.Controls.Add(numvendaLabel);
+            this.Controls.Add(lblNumVenda);
             this.Controls.Add(this.txtNumvenda);
             this.Controls.Add(datavendaLabel);
             this.Controls.Add(this.dtpVenda);
@@ -787,5 +818,6 @@
         private System.Windows.Forms.BindingSource pcprodutoBindingSource;
         private LP2DataSet1TableAdapters.pc_produtoTableAdapter pc_produtoTableAdapter;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnTodos;
     }
 }
