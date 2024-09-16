@@ -39,29 +39,32 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(309, 377);
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(249, 363);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(172, 92);
+            this.label3.Size = new System.Drawing.Size(286, 92);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Sofia e Isabella";
+            this.label3.Text = "Sofia Cardoso e Isabella Anjos";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(214, 232);
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(-1, 164);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(381, 42);
+            this.label2.Size = new System.Drawing.Size(802, 94);
             this.label2.TabIndex = 1;
             this.label2.Text = "Controle de Vendas\r\n";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.pictureBox1.Location = new System.Drawing.Point(289, 96);
+            this.pictureBox1.BackColor = System.Drawing.Color.Moccasin;
+            this.pictureBox1.Location = new System.Drawing.Point(-1, 140);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(221, 133);
+            this.pictureBox1.Size = new System.Drawing.Size(802, 140);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -75,11 +78,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Azure;
+            this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmSplash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
