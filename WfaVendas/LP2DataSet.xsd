@@ -150,7 +150,7 @@ SELECT numvenda, codpro, quantidade, precounit FROM pc_itemvenda WHERE (codpro =
               <Mapping SourceColumn="Subtotal" DataSetColumn="Subtotal" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="LP2ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteTodos" Modifier="Public" Name="DeleteTodos" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DeleteTodos">
+              <DbSource ConnectionRef="LP2ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteTodos" Modifier="Public" Name="DeleteTodos" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteTodos">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM pc_itemvenda WHERE (numvenda = @numvenda);</CommandText>
@@ -185,7 +185,7 @@ WHERE (pc_itemvenda.numvenda = @numvenda);</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="LP2ConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="TotalVenda" Modifier="Public" Name="TotalVenda" QueryType="Scalar" ScalarCallRetval="System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="TotalVenda">
+              <DbSource ConnectionRef="LP2ConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="TotalVenda" Modifier="Public" Name="TotalVenda" QueryType="Scalar" ScalarCallRetval="System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="TotalVenda">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT SUM(quantidade * precounit) AS Total FROM pc_itemvenda WHERE (numvenda = @numvenda);</CommandText>
@@ -423,14 +423,14 @@ WHERE (pc_venda.numvenda = @numvenda);</CommandText>
               <xs:element name="codpro" msprop:Generator_ColumnPropNameInTable="codproColumn" msprop:Generator_ColumnPropNameInRow="codpro" msprop:Generator_UserColumnName="codpro" msprop:Generator_ColumnVarNameInTable="columncodpro" type="xs:int" />
               <xs:element name="quantidade" msprop:Generator_ColumnPropNameInTable="quantidadeColumn" msprop:Generator_ColumnPropNameInRow="quantidade" msprop:Generator_UserColumnName="quantidade" msprop:Generator_ColumnVarNameInTable="columnquantidade" type="xs:int" minOccurs="0" />
               <xs:element name="precounit" msprop:Generator_ColumnPropNameInTable="precounitColumn" msprop:Generator_ColumnPropNameInRow="precounit" msprop:Generator_UserColumnName="precounit" msprop:Generator_ColumnVarNameInTable="columnprecounit" type="xs:double" minOccurs="0" />
-              <xs:element name="descricao" msprop:Generator_ColumnPropNameInRow="descricao" msprop:Generator_ColumnPropNameInTable="descricaoColumn" msprop:Generator_ColumnVarNameInTable="columndescricao" msprop:Generator_UserColumnName="descricao" minOccurs="0">
+              <xs:element name="descricao" msprop:Generator_UserColumnName="descricao" msprop:Generator_ColumnPropNameInTable="descricaoColumn" msprop:Generator_ColumnPropNameInRow="descricao" msprop:Generator_ColumnVarNameInTable="columndescricao" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Subtotal" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Subtotal" msprop:Generator_ColumnPropNameInTable="SubtotalColumn" msprop:Generator_ColumnVarNameInTable="columnSubtotal" msprop:Generator_UserColumnName="Subtotal" type="xs:double" minOccurs="0" />
+              <xs:element name="Subtotal" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Subtotal" msprop:Generator_ColumnPropNameInTable="SubtotalColumn" msprop:Generator_ColumnPropNameInRow="Subtotal" msprop:Generator_ColumnVarNameInTable="columnSubtotal" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -464,7 +464,7 @@ WHERE (pc_venda.numvenda = @numvenda);</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="nome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_UserColumnName="nome" minOccurs="0">
+              <xs:element name="nome" msprop:Generator_UserColumnName="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnVarNameInTable="columnnome" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -496,9 +496,9 @@ WHERE (pc_venda.numvenda = @numvenda);</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_pc_itemvendaproduto" msdata:parent="pc_produto" msdata:child="pc_itemvenda" msdata:parentkey="codpro" msdata:childkey="codpro" msprop:Generator_UserParentTable="pc_produto" msprop:Generator_UserChildTable="pc_itemvenda" msprop:Generator_RelationVarName="relationFK_pc_itemvendaproduto" msprop:Generator_ChildPropName="Getpc_itemvendaRows" msprop:Generator_UserRelationName="FK_pc_itemvendaproduto" msprop:Generator_ParentPropName="pc_produtoRow" />
-      <msdata:Relationship name="FK_pc_itemvendavenda" msdata:parent="pc_venda" msdata:child="pc_itemvenda" msdata:parentkey="numvenda" msdata:childkey="numvenda" msprop:Generator_UserParentTable="pc_venda" msprop:Generator_UserChildTable="pc_itemvenda" msprop:Generator_RelationVarName="relationFK_pc_itemvendavenda" msprop:Generator_ChildPropName="Getpc_itemvendaRows" msprop:Generator_UserRelationName="FK_pc_itemvendavenda" msprop:Generator_ParentPropName="pc_vendaRow" />
-      <msdata:Relationship name="FK_pc_venda" msdata:parent="pc_clientes" msdata:child="pc_venda" msdata:parentkey="codcli" msdata:childkey="codcli" msprop:Generator_UserParentTable="pc_clientes" msprop:Generator_UserChildTable="pc_venda" msprop:Generator_RelationVarName="relationFK_pc_venda" msprop:Generator_ChildPropName="Getpc_vendaRows" msprop:Generator_ParentPropName="pc_clientesRow" msprop:Generator_UserRelationName="FK_pc_venda" />
+      <msdata:Relationship name="FK_pc_itemvendaproduto" msdata:parent="pc_produto" msdata:child="pc_itemvenda" msdata:parentkey="codpro" msdata:childkey="codpro" msprop:Generator_UserParentTable="pc_produto" msprop:Generator_UserChildTable="pc_itemvenda" msprop:Generator_RelationVarName="relationFK_pc_itemvendaproduto" msprop:Generator_ChildPropName="Getpc_itemvendaRows" msprop:Generator_ParentPropName="pc_produtoRow" msprop:Generator_UserRelationName="FK_pc_itemvendaproduto" />
+      <msdata:Relationship name="FK_pc_itemvendavenda" msdata:parent="pc_venda" msdata:child="pc_itemvenda" msdata:parentkey="numvenda" msdata:childkey="numvenda" msprop:Generator_UserParentTable="pc_venda" msprop:Generator_UserChildTable="pc_itemvenda" msprop:Generator_RelationVarName="relationFK_pc_itemvendavenda" msprop:Generator_ChildPropName="Getpc_itemvendaRows" msprop:Generator_ParentPropName="pc_vendaRow" msprop:Generator_UserRelationName="FK_pc_itemvendavenda" />
+      <msdata:Relationship name="FK_pc_venda" msdata:parent="pc_clientes" msdata:child="pc_venda" msdata:parentkey="codcli" msdata:childkey="codcli" msprop:Generator_UserParentTable="pc_clientes" msprop:Generator_UserChildTable="pc_venda" msprop:Generator_RelationVarName="relationFK_pc_venda" msprop:Generator_ChildPropName="Getpc_vendaRows" msprop:Generator_UserRelationName="FK_pc_venda" msprop:Generator_ParentPropName="pc_clientesRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

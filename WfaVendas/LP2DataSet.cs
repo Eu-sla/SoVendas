@@ -4,6 +4,9 @@
 
     partial class LP2DataSet
     {
+        partial class pc_produtoDataTable
+        {
+        }
     }
 }
 
