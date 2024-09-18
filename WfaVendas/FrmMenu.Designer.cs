@@ -34,6 +34,8 @@
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastroDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastroDeVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastroDeProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastroDeSeuTemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatoriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,8 +54,6 @@
             this.sslTexto = new System.Windows.Forms.ToolStripStatusLabel();
             this.sslHora = new System.Windows.Forms.ToolStripStatusLabel();
             this.tmrHora = new System.Windows.Forms.Timer(this.components);
-            this.cadastroDeSeuTemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cadastroDeProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.sstStatus.SuspendLayout();
             this.SuspendLayout();
@@ -104,6 +104,18 @@
             this.cadastroDeVendasToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.cadastroDeVendasToolStripMenuItem.Text = "Cadastro de &Vendas";
             this.cadastroDeVendasToolStripMenuItem.Click += new System.EventHandler(this.cadastroDeVendasToolStripMenuItem_Click);
+            // 
+            // cadastroDeProdutosToolStripMenuItem
+            // 
+            this.cadastroDeProdutosToolStripMenuItem.Name = "cadastroDeProdutosToolStripMenuItem";
+            this.cadastroDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.cadastroDeProdutosToolStripMenuItem.Text = "Cadastro de &Produtos";
+            // 
+            // cadastroDeSeuTemaToolStripMenuItem
+            // 
+            this.cadastroDeSeuTemaToolStripMenuItem.Name = "cadastroDeSeuTemaToolStripMenuItem";
+            this.cadastroDeSeuTemaToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.cadastroDeSeuTemaToolStripMenuItem.Text = "Cadastro de Seu Tema";
             // 
             // toolStripSeparator1
             // 
@@ -241,18 +253,6 @@
             this.tmrHora.Interval = 1000;
             this.tmrHora.Tick += new System.EventHandler(this.tmrHora_Tick);
             // 
-            // cadastroDeSeuTemaToolStripMenuItem
-            // 
-            this.cadastroDeSeuTemaToolStripMenuItem.Name = "cadastroDeSeuTemaToolStripMenuItem";
-            this.cadastroDeSeuTemaToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.cadastroDeSeuTemaToolStripMenuItem.Text = "Cadastro de Seu Tema";
-            // 
-            // cadastroDeProdutosToolStripMenuItem
-            // 
-            this.cadastroDeProdutosToolStripMenuItem.Name = "cadastroDeProdutosToolStripMenuItem";
-            this.cadastroDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.cadastroDeProdutosToolStripMenuItem.Text = "Cadastro de &Produtos";
-            // 
             // FrmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,6 +269,7 @@
             this.Text = "Controle de Vendas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMenu_FormClosing);
+            this.Load += new System.EventHandler(this.FrmMenu_Load);
             this.mnuMenu.ResumeLayout(false);
             this.mnuMenu.PerformLayout();
             this.sstStatus.ResumeLayout(false);

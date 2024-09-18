@@ -189,7 +189,7 @@ namespace WfaVendas
             {
                 if (incluir)
                 {
-                    pc_vendaTableAdapter.Insert((Int32)cmbCliente.SelectedValue, dtpVenda.Value, dtpEntrega.Value, txtObs.Text);
+                    pc_vendaTableAdapter.Insert(Convert.ToInt32(txtNumVenda.Text)),(Int32)cmbCliente.SelectedValue, dtpVenda.Value, dtpEntrega.Value, txtObs.Text);
                     MessageBox.Show("Incluído com sucesso!", "Aviso:", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -354,8 +354,8 @@ namespace WfaVendas
         private void btnCancelarItem_Click(object sender, EventArgs e)
         {
             LimpaCampos(grpItens);
-            habilitaBotoes(grpItens, true);
-            habilitaCampos(grpItens, false);
+            habilitaBotoes(this, true);
+            habilitaCampos(this, false);
             incluirItem = false;
         }
 
