@@ -189,7 +189,7 @@ namespace WfaVendas
             {
                 if (incluir)
                 {
-                    pc_vendaTableAdapter.Insert(Convert.ToInt32(txtNumvenda.Text),(Int32)cmbCliente.SelectedValue, dtpVenda.Value, dtpEntrega.Value, txtObs.Text);
+                    //pc_vendaTableAdapter.Insert(Convert.ToInt32(txtNumvenda.Text),(Int32)cmbCliente.SelectedValue, dtpVenda.Value, dtpEntrega.Value, txtObs.Text);
                     MessageBox.Show("Incluído com sucesso!", "Aviso:", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }

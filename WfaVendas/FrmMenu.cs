@@ -50,16 +50,16 @@ namespace WfaVendas
         {
             foreach (Form form in MdiChildren)
             {
-                if (form is FrmVendas)
+                if (form is FrmVendasLF)
                 {
                     form.Focus();
                     return;
                 }
 
             }
-            FrmVendas frmVendas = new FrmVendas();
-            frmVendas.MdiParent = this;
-            frmVendas.Show();
+            FrmVendasLF frmVendaslf = new FrmVendasLF();
+            frmVendaslf.MdiParent = this;
+            frmVendaslf.Show();
         }
 
         private void FrmMenu_Load(object sender, EventArgs e)
