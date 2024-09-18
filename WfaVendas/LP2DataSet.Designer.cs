@@ -4113,15 +4113,15 @@ SELECT numvenda, codcli, datavenda, dataentrega, obs FROM pc_venda WHERE (numven
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT pc_venda.numvenda, pc_venda.codcli, pc_venda.datavenda, pc_venda.dataentre" +
-                "ga, pc_venda.obs, pc_clientes.nome \nFROM pc_venda INNER JOIN pc_clientes ON pc_v" +
-                "enda.codcli = pc_clientes.codcli \nWHERE (pc_clientes.nome LIKE @nome);";
+                "ga, pc_venda.obs, pc_clientes.nome \r\nFROM pc_venda INNER JOIN pc_clientes ON pc_" +
+                "venda.codcli = pc_clientes.codcli \r\nWHERE (pc_clientes.nome LIKE @nome);";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nome", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "nome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT pc_venda.numvenda, pc_venda.codcli, pc_venda.datavenda, pc_venda.dataentre" +
-                "ga, pc_venda.obs, pc_clientes.nome \nFROM pc_venda INNER JOIN pc_clientes ON pc_v" +
-                "enda.codcli = pc_clientes.codcli \nWHERE (pc_venda.numvenda = @numvenda);";
+                "ga, pc_venda.obs, pc_clientes.nome \r\nFROM pc_venda INNER JOIN pc_clientes ON pc_" +
+                "venda.codcli = pc_clientes.codcli \r\nWHERE (pc_venda.numvenda = @numvenda);";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numvenda", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numvenda", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
