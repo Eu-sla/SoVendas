@@ -248,6 +248,7 @@
             this.dgvVendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVendas.Size = new System.Drawing.Size(771, 133);
             this.dgvVendas.TabIndex = 50;
+            this.dgvVendas.SelectionChanged += new System.EventHandler(this.dgvVendas_SelectionChanged);
             // 
             // numvendaDataGridViewTextBoxColumn
             // 
@@ -477,6 +478,7 @@
             this.btnCancelarItem.TabIndex = 44;
             this.btnCancelarItem.Text = "&Cancelar";
             this.btnCancelarItem.UseVisualStyleBackColor = false;
+            this.btnCancelarItem.Click += new System.EventHandler(this.btnCancelarItem_Click);
             // 
             // btnGravarItem
             // 
@@ -490,6 +492,7 @@
             this.btnGravarItem.TabIndex = 43;
             this.btnGravarItem.Text = "&Gravar";
             this.btnGravarItem.UseVisualStyleBackColor = false;
+            this.btnGravarItem.Click += new System.EventHandler(this.btnGravarItem_Click);
             // 
             // btnPesquisarItem
             // 
@@ -502,6 +505,7 @@
             this.btnPesquisarItem.TabIndex = 42;
             this.btnPesquisarItem.Text = "&Pesquisar";
             this.btnPesquisarItem.UseVisualStyleBackColor = false;
+            this.btnPesquisarItem.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnExcluirItem
             // 
@@ -514,6 +518,7 @@
             this.btnExcluirItem.TabIndex = 41;
             this.btnExcluirItem.Text = "&Excluir";
             this.btnExcluirItem.UseVisualStyleBackColor = false;
+            this.btnExcluirItem.Click += new System.EventHandler(this.btnExcluirItem_Click);
             // 
             // btnAlterarItem
             // 
@@ -526,6 +531,7 @@
             this.btnAlterarItem.TabIndex = 40;
             this.btnAlterarItem.Text = "&Alterar";
             this.btnAlterarItem.UseVisualStyleBackColor = false;
+            this.btnAlterarItem.Click += new System.EventHandler(this.btnAlterarItem_Click);
             // 
             // btnIncluirItem
             // 
@@ -538,6 +544,7 @@
             this.btnIncluirItem.TabIndex = 39;
             this.btnIncluirItem.Text = "&Incluir";
             this.btnIncluirItem.UseVisualStyleBackColor = false;
+            this.btnIncluirItem.Click += new System.EventHandler(this.btnIncluirItem_Click);
             // 
             // cmbProduto
             // 
@@ -550,6 +557,7 @@
             this.cmbProduto.Size = new System.Drawing.Size(121, 21);
             this.cmbProduto.TabIndex = 35;
             this.cmbProduto.ValueMember = "descricao";
+            this.cmbProduto.SelectedIndexChanged += new System.EventHandler(this.cmbProduto_SelectedIndexChanged);
             // 
             // btnSair
             // 
@@ -664,7 +672,6 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.SeaShell;
-            this.button2.Enabled = false;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button2.Location = new System.Drawing.Point(551, 12);
@@ -673,11 +680,11 @@
             this.button2.TabIndex = 56;
             this.button2.Text = "&Cancelar";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.SeaShell;
-            this.button3.Enabled = false;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button3.Location = new System.Drawing.Point(452, 12);
@@ -686,6 +693,7 @@
             this.button3.TabIndex = 55;
             this.button3.Text = "&Gravar";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // button4
             // 
@@ -698,6 +706,7 @@
             this.button4.TabIndex = 54;
             this.button4.Text = "&Pesquisar";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // button5
             // 
@@ -710,6 +719,7 @@
             this.button5.TabIndex = 53;
             this.button5.Text = "&Excluir";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // button6
             // 
@@ -722,6 +732,7 @@
             this.button6.TabIndex = 52;
             this.button6.Text = "&Alterar";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // button7
             // 
@@ -734,6 +745,7 @@
             this.button7.TabIndex = 51;
             this.button7.Text = "&Incluir";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
             // txtNumVenda
             // 
@@ -765,7 +777,6 @@
             // 
             // dtpDataEntrega
             // 
-            this.dtpDataEntrega.Enabled = false;
             this.dtpDataEntrega.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDataEntrega.Location = new System.Drawing.Point(480, 76);
             this.dtpDataEntrega.Name = "dtpDataEntrega";
