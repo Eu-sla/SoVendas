@@ -150,7 +150,31 @@ namespace WfaVendas
         }
         private void btnGravar_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (incluir)
+                {
+                    pc_itemvendaTableAdapter.Insert(Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()),
+                        (Int32)cmbProduto.SelectedValue, (Int32)nudQuantidade.Value, precoTemp);
+                    MessageBox.Show(null, "Incluído com sucesso!", "Inclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                if (editar)
+                {
+                    pc_itemvendaTableAdapter.Update(
+                        (Int32)cmbCliente.SelectedValue,
+                        (Int32)nudQuantidade.Value,
+                        precoTemp,
+                        Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()),
+                        Convert.ToInt32(dgvItens[0, dgvItens.CurrentRow.Index].Value.ToString()));
+                    MessageBox.Show(null, "Alterado com sucesso!", "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                dgvVendas_SelectionChanged(null, null);
+                btnCancelarItem_Click(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(null, "Ocorreu um erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
