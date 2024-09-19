@@ -95,6 +95,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.jdkjhf = new System.Windows.Forms.TextBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
+            this.pcprodutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pc_produtoTableAdapter = new WfaVendas.LP2DataSetTableAdapters.pc_produtoTableAdapter();
             codcliLabel = new System.Windows.Forms.Label();
             lblNumVenda = new System.Windows.Forms.Label();
             datavendaLabel = new System.Windows.Forms.Label();
@@ -115,6 +117,7 @@
             this.grpItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcprodutoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // codcliLabel
@@ -202,6 +205,25 @@
             codproLabel.Size = new System.Drawing.Size(47, 13);
             codproLabel.TabIndex = 36;
             codproLabel.Text = "Produto:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = System.Drawing.SystemColors.HighlightText;
+            label3.Location = new System.Drawing.Point(647, 15);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(34, 13);
+            label3.TabIndex = 35;
+            label3.Text = "Total:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(823, 18);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(27, 13);
+            label2.TabIndex = 35;
+            label2.Text = "total";
             // 
             // dgvVendas
             // 
@@ -441,6 +463,7 @@
             0,
             0,
             0});
+            this.nudQuantidade.ValueChanged += new System.EventHandler(this.nudQuantidade_ValueChanged);
             // 
             // btnCancelarItem
             // 
@@ -519,6 +542,7 @@
             // cmbProduto
             // 
             this.cmbProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbProduto.DataSource = this.pcprodutoBindingSource;
             this.cmbProduto.DisplayMember = "descricao";
             this.cmbProduto.FormattingEnabled = true;
             this.cmbProduto.Location = new System.Drawing.Point(57, 68);
@@ -774,25 +798,6 @@
             this.jdkjhf.TabIndex = 35;
             this.jdkjhf.Text = "R$ 0,00";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.ForeColor = System.Drawing.SystemColors.HighlightText;
-            label3.Location = new System.Drawing.Point(647, 15);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(34, 13);
-            label3.TabIndex = 35;
-            label3.Text = "Total:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(823, 18);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(27, 13);
-            label2.TabIndex = 35;
-            label2.Text = "total";
-            // 
             // txtTotal
             // 
             this.txtTotal.ForeColor = System.Drawing.Color.LightCoral;
@@ -801,6 +806,15 @@
             this.txtTotal.Size = new System.Drawing.Size(100, 20);
             this.txtTotal.TabIndex = 36;
             this.txtTotal.Text = "R$ 0.00";
+            // 
+            // pcprodutoBindingSource
+            // 
+            this.pcprodutoBindingSource.DataMember = "pc_produto";
+            this.pcprodutoBindingSource.DataSource = this.lP2DataSet;
+            // 
+            // pc_produtoTableAdapter
+            // 
+            this.pc_produtoTableAdapter.ClearBeforeFill = true;
             // 
             // FrmVendasLF
             // 
@@ -852,6 +866,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcprodutoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -914,5 +929,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox jdkjhf;
         private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.BindingSource pcprodutoBindingSource;
+        private LP2DataSetTableAdapters.pc_produtoTableAdapter pc_produtoTableAdapter;
     }
 }

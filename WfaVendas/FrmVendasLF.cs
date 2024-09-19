@@ -26,6 +26,8 @@ namespace WfaVendas
 
         private void FrmVendasLF_Load(object sender, EventArgs e)
         {
+            // TODO: esta linha de código carrega dados na tabela 'lP2DataSet.pc_produto'. Você pode movê-la ou removê-la conforme necessário.
+            this.pc_produtoTableAdapter.Fill(this.lP2DataSet.pc_produto);
             // TODO: esta linha de código carrega dados na tabela 'lP2DataSet.pc_clientes'. Você pode movê-la ou removê-la conforme necessário.
             this.pc_clientesTableAdapter.Fill(this.lP2DataSet.pc_clientes);
             // TODO: esta linha de código carrega dados na tabela 'lP2DataSet.pc_itemvenda'. Você pode movê-la ou removê-la conforme necessário.
@@ -188,12 +190,42 @@ namespace WfaVendas
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-
+            if(dgvVendas.SelectedRows.Count > 0)
+            {
+                editar = true;
+                habilitaBotoes(false);
+                habilitaCampos(true);
+                txtNumVenda.Enabled = false;
+                txtNumVenda.Text = dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString();
+                cmbCliente.SelectedValue = Convert.ToInt32(dgvVendas[1, dgvVendas.CurrentRow.Index].Value.ToString());
+                dtpDataVenda.Value = Convert.ToDateTime(dgvVendas[3, dgvVendas.CurrentRow.Index].Value.ToString());
+                dtpDataEntrega.Value = Convert.ToDateTime(dgvVendas[4, dgvVendas.CurrentRow.Index].Value.ToString());
+                txtObs.Text = dgvVendas[5, dgvVendas.CurrentRow.Index].Value.ToString();
+                cmbCliente.Focus();
+            }
+            else
+            {
+                MessageBox.Show(null, "Selecione uma VENDA primeiro!", "Erro:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnPesquisar_Click (object sender, EventArgs e)
         {
+            if(cmbCliente.Enabled == false)
+            {
+                cmbCliente.Enabled = true;
+                cmbCliente.Focus ();
+                habilitaBotoes(false);
+                btnPesquisar.Enabled = true;
+                btnCancelar.Enabled = false;
+                MessageBox.Show(null, "Digite o nome do cliente desejado ou\nparte dele.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            }
+            else
+            {
+                pc_vendaTableAdapter.FillByNome(this.lP2DataSet.pc_venda, "%" + cmbCliente.Text + "%");
+                btnCancelar_Click(null, null);
+            }
         }
 
         private void btnIncluirItem_Click (object sender, EventArgs e)
@@ -220,17 +252,76 @@ namespace WfaVendas
 
         private void btnExcluirItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if(dgvVendas.SelectedRows.Count > 0)
+                {
+                    if (MessageBox.Show(null, "Deseja mesmo excluir o ITEM selecionado?", "Atenção:", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes) 
+                    {
+                        pc_itemvendaTableAdapter.Delete(
+                            Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()),
+                            Convert.ToInt32(dgvItens[0, dgvItens.CurrentRow.Index].Value.ToString()));
+                        dgvVendas_SelectionChanged(null, null);
+                        MessageBox.Show(null, "Apagado com sucesso!", "Exclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(null, "Selecione um item primeiro!", "Erro ao excluir:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(null, "Ocorreu um erro:\n" + ex.Message,"Erro ao excluir:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAlterarItem_Click(object sender, EventArgs e)
         {
-
+            if(dgvVendas.SelectedRows.Count > 0)
+            {
+                editarItem = true;
+                habilitaBotoesItem(false);
+                habilitaCamposItem(true);
+                cmbProduto.Text = dgvItens[1, dgvItens.CurrentRow.Index].Value.ToString();
+                cmbProduto_SelectedIndexChanged(null, null);
+                nudQuantidade.Value = Convert.ToInt32(
+                    dgvItens[2, dgvItens.CurrentRow.Index].Value.ToString());
+                cmbProduto.Focus();
+            }
+            else
+            {
+                MessageBox.Show(null, "Selecione um ITEM primeiro!", "Erro:",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnPesquisarItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if(dgvItens.RowCount > 0)
+                {
+                    if(cmbProduto.Enabled == false)
+                    {
+                        cmbProduto.Enabled = true;
+                        cmbProduto.Focus();
+                        habilitaBotoesItem(false);
+                        btnPesquisarItem.Enabled = true;
+                        btnGravarItem.Enabled = false;
+                        btnCancelarItem.Enabled = false;
+                        MessageBox.Show(null, "Didite o no nome do ITEM desejado ou \nparte dele", "Pesquisa",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    }
+                    else
+                    {
+                        pc_itemvendaTableAdapter.FillByDescricao(this.lP2DataSet.pc_itemvenda, Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()), "%" + cmbProduto.Text + "%");
+                        btnCancelarItem_Click(null, null);
+                    }
+                }
+            }
         }
 
         private void btnCancelarItem_Click(object sender, EventArgs e)
@@ -242,6 +333,12 @@ namespace WfaVendas
             incluirItem = false;
         }
 
+        private void nudQuantidade_ValueChanged(object sender, EventArgs e)
+        {
+            double subTotal = (Int32)nudQuantidade.Value * precoTemp;
+            txtSubtotal.Text = subTotal.ToString("R$ #,###,##0.00");
+
+        }
     }
 }
 
