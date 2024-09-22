@@ -57,6 +57,8 @@
             this.dtpEntrega = new System.Windows.Forms.DateTimePicker();
             this.txtObs = new System.Windows.Forms.TextBox();
             this.grpItens = new System.Windows.Forms.GroupBox();
+            this.cmbProduto = new System.Windows.Forms.ComboBox();
+            this.pc_itemvendaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtSubtotal = new System.Windows.Forms.TextBox();
             this.btnCancelarItem = new System.Windows.Forms.Button();
             this.txtPrecounit = new System.Windows.Forms.TextBox();
@@ -66,7 +68,6 @@
             this.nudQuantidade = new System.Windows.Forms.NumericUpDown();
             this.btnAlterarItem = new System.Windows.Forms.Button();
             this.btnIncluirItem = new System.Windows.Forms.Button();
-            this.pc_itemvendaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pcprodutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lP2DataSet1 = new WfaVendas.LP2DataSet1();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -94,7 +95,6 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbProduto = new System.Windows.Forms.ComboBox();
             lblNumVenda = new System.Windows.Forms.Label();
             datavendaLabel = new System.Windows.Forms.Label();
             dataentregaLabel = new System.Windows.Forms.Label();
@@ -109,8 +109,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.lP2DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pc_vendaBindingSource)).BeginInit();
             this.grpItens.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pc_itemvendaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcprodutoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lP2DataSet1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -265,6 +265,7 @@
             this.btnGravar.TabIndex = 12;
             this.btnGravar.Text = "&Gravar";
             this.btnGravar.UseVisualStyleBackColor = false;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnPesquisar
             // 
@@ -410,6 +411,24 @@
             this.grpItens.TabStop = false;
             this.grpItens.Text = "Itens da Venda";
             // 
+            // cmbProduto
+            // 
+            this.cmbProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbProduto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_itemvendaBindingSource, "codpro", true));
+            this.cmbProduto.DataSource = this.pc_itemvendaBindingSource;
+            this.cmbProduto.DisplayMember = "descricao";
+            this.cmbProduto.FormattingEnabled = true;
+            this.cmbProduto.Location = new System.Drawing.Point(61, 68);
+            this.cmbProduto.Name = "cmbProduto";
+            this.cmbProduto.Size = new System.Drawing.Size(121, 21);
+            this.cmbProduto.TabIndex = 35;
+            this.cmbProduto.ValueMember = "descricao";
+            // 
+            // pc_itemvendaBindingSource
+            // 
+            this.pc_itemvendaBindingSource.DataMember = "pc_itemvenda";
+            this.pc_itemvendaBindingSource.DataSource = this.lP2DataSet;
+            // 
             // txtSubtotal
             // 
             this.txtSubtotal.Enabled = false;
@@ -460,6 +479,7 @@
             // btnPesquisarItem
             // 
             this.btnPesquisarItem.BackColor = System.Drawing.Color.Snow;
+            this.btnPesquisarItem.Enabled = false;
             this.btnPesquisarItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPesquisarItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnPesquisarItem.Location = new System.Drawing.Point(341, 19);
@@ -531,11 +551,6 @@
             this.btnIncluirItem.Text = "&Incluir";
             this.btnIncluirItem.UseVisualStyleBackColor = false;
             this.btnIncluirItem.Click += new System.EventHandler(this.btnIncluirItem_Click);
-            // 
-            // pc_itemvendaBindingSource
-            // 
-            this.pc_itemvendaBindingSource.DataMember = "pc_itemvenda";
-            this.pc_itemvendaBindingSource.DataSource = this.lP2DataSet;
             // 
             // pcprodutoBindingSource
             // 
@@ -763,19 +778,6 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
-            // cmbProduto
-            // 
-            this.cmbProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbProduto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_itemvendaBindingSource, "codpro", true));
-            this.cmbProduto.DataSource = this.pc_itemvendaBindingSource;
-            this.cmbProduto.DisplayMember = "descricao";
-            this.cmbProduto.FormattingEnabled = true;
-            this.cmbProduto.Location = new System.Drawing.Point(61, 68);
-            this.cmbProduto.Name = "cmbProduto";
-            this.cmbProduto.Size = new System.Drawing.Size(121, 21);
-            this.cmbProduto.TabIndex = 35;
-            this.cmbProduto.ValueMember = "descricao";
-            // 
             // FrmVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -813,8 +815,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pc_vendaBindingSource)).EndInit();
             this.grpItens.ResumeLayout(false);
             this.grpItens.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pc_itemvendaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcprodutoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lP2DataSet1)).EndInit();
             this.panel1.ResumeLayout(false);
