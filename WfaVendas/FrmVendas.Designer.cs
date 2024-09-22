@@ -422,7 +422,7 @@
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Size = new System.Drawing.Size(121, 21);
             this.cmbProduto.TabIndex = 35;
-            this.cmbProduto.ValueMember = "descricao";
+            this.cmbProduto.ValueMember = "codpro";
             // 
             // pc_itemvendaBindingSource
             // 
