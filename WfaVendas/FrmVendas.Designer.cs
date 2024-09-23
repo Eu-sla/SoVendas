@@ -415,14 +415,14 @@
             // 
             this.cmbProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbProduto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_itemvendaBindingSource, "codpro", true));
-            this.cmbProduto.DataSource = this.pc_itemvendaBindingSource;
+            this.cmbProduto.DataSource = this.pc_produtoBindingSource;
             this.cmbProduto.DisplayMember = "descricao";
+            this.cmbProduto.Enabled = false;
             this.cmbProduto.FormattingEnabled = true;
             this.cmbProduto.Location = new System.Drawing.Point(61, 68);
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Size = new System.Drawing.Size(121, 21);
             this.cmbProduto.TabIndex = 35;
-            this.cmbProduto.ValueMember = "codpro";
             // 
             // pc_itemvendaBindingSource
             // 
@@ -505,6 +505,7 @@
             // 
             // nudQuantidade
             // 
+            this.nudQuantidade.Enabled = false;
             this.nudQuantidade.Location = new System.Drawing.Point(207, 67);
             this.nudQuantidade.Maximum = new decimal(new int[] {
             1000,
@@ -735,6 +736,7 @@
             this.dgvVendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVendas.Size = new System.Drawing.Size(771, 133);
             this.dgvVendas.TabIndex = 28;
+            this.dgvVendas.SelectionChanged += new System.EventHandler(this.dgvVendas_SelectionChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 

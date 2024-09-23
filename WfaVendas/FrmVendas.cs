@@ -234,8 +234,8 @@ namespace WfaVendas
                 txtNumvenda.Enabled = false;
                 txtNumvenda.Text = dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString();
                 cmbCliente.SelectedValue = Convert.ToInt32(dgvVendas[1, dgvVendas.CurrentRow.Index].Value.ToString());
-                dtpVenda.Value = Convert.ToDateTime(dgvVendas[3, dgvVendas.CurrentRow.Index].Value.ToString());
-                dtpEntrega.Value = Convert.ToDateTime(dgvVendas[4, dgvVendas.CurrentRow.Index].Value.ToString());
+                dtpVenda.Value = Convert.ToDateTime(dgvVendas[2, dgvVendas.CurrentRow.Index].Value.ToString());
+                dtpEntrega.Value = Convert.ToDateTime(dgvVendas[3, dgvVendas.CurrentRow.Index].Value.ToString());
                 txtObs.Text = dgvVendas[5, dgvVendas.CurrentRow.Index].Value.ToString();
                 cmbCliente.Focus();
             }
@@ -264,13 +264,30 @@ namespace WfaVendas
             }
         }
 
+        //inicio item
+
+        private void HabilitaBotoesItem(bool hab)
+        {
+            btnAlterarItem.Enabled = hab;
+            btnExcluirItem.Enabled = hab;
+            btnPesquisarItem.Enabled = hab;
+            btnIncluirItem.Enabled = hab;
+            btnGravarItem.Enabled = !hab;
+            btnCancelarItem.Enabled = !hab;
+        }
+
         private void btnIncluirItem_Click(object sender, EventArgs e)
         {
             incluirItem = true;
-            habilitaCampos(grpItens, true);
-            habilitaBotoes(grpItens, false);
+            HabilitaCamposItem(true);
+            HabilitaBotoesItem( false);
             cmbProduto_SelectedIndexChanged(null, null);
             cmbProduto.Focus();
+        }
+        private void HabilitaCamposItem(bool hab)
+        {
+            cmbProduto.Enabled = hab;
+            nudQuantidade.Enabled = hab;
         }
 
         private void btnExcluirItem_Click(object sender, EventArgs e)
@@ -305,8 +322,8 @@ namespace WfaVendas
             if(dgvItens.SelectedRows.Count > 0)
             {
                 incluirItem = false;
-                habilitaBotoes(grpItens, false);
-                habilitaCampos(grpItens, true);
+                HabilitaBotoesItem( false);
+                HabilitaCamposItem( true);
                 cmbProduto.Text = dgvItens[1, dgvItens.CurrentRow.Index].Value.ToString();
                 cmbProduto_SelectedIndexChanged(null, null);
                 nudQuantidade.Value = Convert.ToInt32(dgvItens[2, dgvItens.CurrentRow.Index].Value.ToString());
@@ -328,7 +345,7 @@ namespace WfaVendas
                     {
                         cmbProduto.Enabled = true;
                         cmbProduto.Focus();
-                        habilitaBotoes(grpItens, false);
+                        HabilitaBotoesItem(false);
                         btnPesquisarItem.Enabled = true;
                         btnGravarItem.Enabled = false;
                         btnCancelarItem.Enabled = false;
@@ -354,8 +371,8 @@ namespace WfaVendas
         private void btnCancelarItem_Click(object sender, EventArgs e)
         {
             LimpaCampos(grpItens);
-            habilitaBotoes(this, true);
-            habilitaCampos(this, false);
+            HabilitaBotoesItem(true);
+            HabilitaCamposItem(false);
             incluirItem = false;
         }
 
