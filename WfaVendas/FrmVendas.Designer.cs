@@ -93,7 +93,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotalTextBox = new System.Windows.Forms.TextBox();
+            this.txtSubtotal = new System.Windows.Forms.TextBox();
             lblNumVenda = new System.Windows.Forms.Label();
             datavendaLabel = new System.Windows.Forms.Label();
             dataentregaLabel = new System.Windows.Forms.Label();
@@ -388,7 +388,7 @@
             // grpItens
             // 
             this.grpItens.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.grpItens.Controls.Add(this.subtotalTextBox);
+            this.grpItens.Controls.Add(this.txtSubtotal);
             this.grpItens.Controls.Add(this.txtTotal1);
             this.grpItens.Controls.Add(this.cmbProduto);
             this.grpItens.Controls.Add(label1);
@@ -762,16 +762,16 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
-            // subtotalTextBox
+            // txtSubtotal
             // 
-            this.subtotalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_itemvendaBindingSource, "Subtotal", true));
-            this.subtotalTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subtotalTextBox.Location = new System.Drawing.Point(502, 66);
-            this.subtotalTextBox.Name = "subtotalTextBox";
-            this.subtotalTextBox.ReadOnly = true;
-            this.subtotalTextBox.Size = new System.Drawing.Size(100, 20);
-            this.subtotalTextBox.TabIndex = 36;
-            this.subtotalTextBox.Text = "R$ 0,00";
+            this.txtSubtotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pc_itemvendaBindingSource, "Subtotal", true));
+            this.txtSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSubtotal.Location = new System.Drawing.Point(502, 66);
+            this.txtSubtotal.Name = "txtSubtotal";
+            this.txtSubtotal.ReadOnly = true;
+            this.txtSubtotal.Size = new System.Drawing.Size(100, 20);
+            this.txtSubtotal.TabIndex = 36;
+            this.txtSubtotal.Text = "R$ 0,00";
             // 
             // FrmVendas
             // 
@@ -881,6 +881,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.TextBox subtotalTextBox;
+        private System.Windows.Forms.TextBox txtSubtotal;
     }
 }
