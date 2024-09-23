@@ -3260,7 +3260,7 @@ SELECT numvenda, codpro, quantidade, precounit FROM pc_itemvenda WHERE (codpro =
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        pc_itemvenda.numvenda, pc_itemvenda.codpro, pc_itemvenda.quantidade, pc_itemvenda.precounit, pc_produto.descricao, pc_itemvenda.quantidade * pc_itemvenda.precounit AS Subtotal
@@ -3274,25 +3274,32 @@ FROM            pc_itemvenda INNER JOIN
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numvenda", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numvenda", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"SELECT pc_itemvenda.numvenda, pc_itemvenda.codpro, pc_itemvenda.quantidade, pc_itemvenda.precounit, pc_produto.descricao, pc_itemvenda.quantidade * pc_itemvenda.precounit AS Subtotal 
-FROM pc_itemvenda INNER JOIN pc_produto ON pc_itemvenda.codpro = pc_produto.codpro 
-WHERE (pc_produto.descricao LIKE @descricao) AND (pc_itemvenda.numvenda = @numvenda);";
+            this._commandCollection[2].CommandText = @"SELECT        pc_itemvenda.numvenda, pc_itemvenda.codpro, pc_itemvenda.quantidade, pc_itemvenda.precounit, pc_produto.descricao, pc_itemvenda.quantidade * pc_itemvenda.precounit AS Subtotal
+FROM            pc_itemvenda INNER JOIN
+                         pc_produto ON pc_itemvenda.codpro = pc_produto.codpro";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@descricao", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "descricao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numvenda", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numvenda", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"SELECT pc_itemvenda.numvenda, pc_itemvenda.codpro, pc_itemvenda.quantidade, pc_itemvenda.precounit, pc_produto.descricao, pc_itemvenda.quantidade * pc_itemvenda.precounit AS Subtotal 
-FROM pc_itemvenda INNER JOIN pc_produto ON pc_itemvenda.codpro = pc_produto.codpro 
-WHERE (pc_itemvenda.numvenda = @numvenda);";
+            this._commandCollection[3].CommandText = @"SELECT        pc_itemvenda.numvenda, pc_itemvenda.codpro, pc_itemvenda.quantidade, pc_itemvenda.precounit, pc_produto.descricao, pc_itemvenda.quantidade * pc_itemvenda.precounit AS Subtotal
+FROM            pc_itemvenda INNER JOIN
+                         pc_produto ON pc_itemvenda.codpro = pc_produto.codpro
+WHERE        (pc_itemvenda.numvenda = @numvenda) AND (pc_produto.codpro LIKE @codpro)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numvenda", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numvenda", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@codpro", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "codpro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT SUM(quantidade * precounit) AS Total FROM pc_itemvenda WHERE (numvenda = @" +
-                "numvenda);";
+            this._commandCollection[4].CommandText = @"SELECT pc_itemvenda.numvenda, pc_itemvenda.codpro, pc_itemvenda.quantidade, pc_itemvenda.precounit, pc_produto.descricao, pc_itemvenda.quantidade * pc_itemvenda.precounit AS Subtotal 
+FROM pc_itemvenda INNER JOIN pc_produto ON pc_itemvenda.codpro = pc_produto.codpro 
+WHERE (pc_itemvenda.numvenda = @numvenda);";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numvenda", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numvenda", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "SELECT SUM(quantidade * precounit) AS Total FROM pc_itemvenda WHERE (numvenda = @" +
+                "numvenda);";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numvenda", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numvenda", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3323,15 +3330,23 @@ WHERE (pc_itemvenda.numvenda = @numvenda);";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByDescricao(LP2DataSet.pc_itemvendaDataTable dataTable, string descricao, int numvenda) {
+        public virtual int FillBy(LP2DataSet.pc_itemvendaDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
-            if ((descricao == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
             }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(descricao));
-            }
-            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(numvenda));
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByDescricao(LP2DataSet.pc_itemvendaDataTable dataTable, int numvenda, int codpro) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(numvenda));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(codpro));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -3343,15 +3358,10 @@ WHERE (pc_itemvenda.numvenda = @numvenda);";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual LP2DataSet.pc_itemvendaDataTable GetDataByDescricao(string descricao, int numvenda) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
-            if ((descricao == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(descricao));
-            }
-            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(numvenda));
+        public virtual LP2DataSet.pc_itemvendaDataTable GetDataByDescricao(int numvenda, int codpro) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(numvenda));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(codpro));
             LP2DataSet.pc_itemvendaDataTable dataTable = new LP2DataSet.pc_itemvendaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -3362,7 +3372,7 @@ WHERE (pc_itemvenda.numvenda = @numvenda);";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByNumVenda(LP2DataSet.pc_itemvendaDataTable dataTable, int numvenda) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(numvenda));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3376,7 +3386,7 @@ WHERE (pc_itemvenda.numvenda = @numvenda);";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual LP2DataSet.pc_itemvendaDataTable GetDataByNumVenda(int numvenda) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(numvenda));
             LP2DataSet.pc_itemvendaDataTable dataTable = new LP2DataSet.pc_itemvendaDataTable();
             this.Adapter.Fill(dataTable);
@@ -3542,7 +3552,7 @@ WHERE (pc_itemvenda.numvenda = @numvenda);";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual global::System.Nullable<double> TotalVenda(int numvenda) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             command.Parameters[0].Value = ((int)(numvenda));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

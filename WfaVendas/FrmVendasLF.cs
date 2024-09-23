@@ -322,7 +322,7 @@ namespace WfaVendas
                     else
                     {
                         //pc_itemvendaTableAdapter.FillByDescricao(this.lP2DataSet.pc_itemvenda, Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()), "%" + cmbProduto.Text + "%");
-                        pc_itemvendaTableAdapter.FillByDescricao(this.lP2DataSet.pc_itemvenda, "%" + cmbProduto.Text + "%", Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
+                       // pc_itemvendaTableAdapter.FillByDescricao(this.lP2DataSet.pc_itemvenda, "%" + cmbProduto.Text + "%", Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
                         btnCancelarItem_Click(null, null);
                     }
                 }

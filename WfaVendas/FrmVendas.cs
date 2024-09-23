@@ -128,7 +128,7 @@ namespace WfaVendas
         private void cmbProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
             //DataTable produto = pc_produtoTableAdapter.GetDataByNumVenda(cmbProduto.Text);
-            DataTable produto = pc_produtoTableAdapter.GetDataByDescricao(cmbProduto.Text);
+            /*DataTable produto = pc_produtoTableAdapter.GetDataByDescricao(cmbProduto.Text);
             precotemp = 0;
             foreach (DataRow row in produto.Rows)
             {
@@ -137,6 +137,22 @@ namespace WfaVendas
             nudQuantidade.Value = 1;
             txtPrecounit.Text = precotemp.ToString("R$ #,###,##0.00");
             txtSubtotal.Text = precotemp.ToString("R$ #,###,##0.00");
+            */
+            if (cmbProduto.Text != "")
+            {
+                DataTable produto = pc_produtoTableAdapter.GetDataByDescricao(cmbProduto.Text); // TODO: Arrumar o GetDataBy no database, capaz de ter que arrumar em todos os tables
+
+                precotemp = 0; // Zerar precoTemp para garantir o cálculo
+
+                foreach (DataRow row in produto.Rows)
+                {
+                    precotemp = Convert.ToDouble(row["precounit"].ToString());
+                }
+
+                nudQuantidade.Value = 1;
+                txtPrecounit.Text = precotemp.ToString("R$ #,###,##0.00");
+                txtSubtotal.Text = precotemp.ToString("R$ #,###,##0.00");
+            }
         }
 
         private void nudQuantidade_ValueChanged(object sender, EventArgs e)
@@ -150,7 +166,7 @@ namespace WfaVendas
             incluir = true;
             habilitaCampos(this, true);
             habilitaBotoes(this, false);
-            cmbCliente.Focus();
+            //cmbCliente.Focus();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -296,11 +312,10 @@ namespace WfaVendas
             {
                 if(dgvItens.SelectedRows.Count > 0)
                 {
-                    if(MessageBox.Show(null, "Deseja mesmo excluir o ITEM selecionado?", "Atenção:", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+                    if(MessageBox.Show(null, "Deseja mesmo excluir os itens da venda?", "Atenção:", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
                     {
                         pc_itemvendaTableAdapter.DeleteTodos(
-                            Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString(), 
-                            Convert.ToInt32(dgvVendas[0, dgvItens.CurrentRow.Index].Value.ToString())));
+                            Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
                         dgvVendas_SelectionChanged(null, null);
                         MessageBox.Show(null, "Apagado com sucesso!", "Exclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -325,6 +340,7 @@ namespace WfaVendas
                 HabilitaBotoesItem( false);
                 HabilitaCamposItem( true);
                 cmbProduto.Text = dgvItens[1, dgvItens.CurrentRow.Index].Value.ToString();
+                cmbProduto.Enabled = false;
                 cmbProduto_SelectedIndexChanged(null, null);
                 nudQuantidade.Value = Convert.ToInt32(dgvItens[2, dgvItens.CurrentRow.Index].Value.ToString());
                 cmbProduto.Focus();
@@ -353,7 +369,7 @@ namespace WfaVendas
                     }
                     else
                     {
-                        pc_itemvendaTableAdapter.FillByDescricao(this.lP2DataSet.pc_itemvenda, "%" + cmbProduto.Text + "%", Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()));
+                        pc_itemvendaTableAdapter.FillByDescricao(this.lP2DataSet.pc_itemvenda, Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()), Convert.ToInt32(cmbProduto.Text));
                         btnCancelarItem_Click(null, null);
                     }
                 }
@@ -380,7 +396,7 @@ namespace WfaVendas
         {
             try
             {
-                if(incluirItem)
+                if(incluirItem == true)
                 {
                     pc_itemvendaTableAdapter.Insert(Convert.ToInt32(dgvVendas[0, dgvVendas.CurrentRow.Index].Value.ToString()), (Int32)cmbProduto.SelectedValue, (Int32)nudQuantidade.Value, precotemp);
                     MessageBox.Show(null, "Incluido com sucesso!", "Inclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -403,6 +419,19 @@ namespace WfaVendas
         private void btnTodos_Click(object sender, EventArgs e)
         {
             FrmVendas_Load(null, null);
+        }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.pc_itemvendaTableAdapter.FillBy(this.lP2DataSet.pc_itemvenda);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }
