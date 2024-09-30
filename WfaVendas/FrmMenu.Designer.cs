@@ -51,16 +51,20 @@
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.sstStatus = new System.Windows.Forms.StatusStrip();
-            this.sslTexto = new System.Windows.Forms.ToolStripStatusLabel();
-            this.sslHora = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tmrHora = new System.Windows.Forms.Timer(this.components);
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.sstStatus = new System.Windows.Forms.StatusStrip();
+            this.sslTexto = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sslHora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tmrHora = new System.Windows.Forms.Timer(this.components);
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.relatórioDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatórioDeVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.sstStatus.SuspendLayout();
@@ -102,7 +106,9 @@
             // cadastroDeClientesToolStripMenuItem
             // 
             this.cadastroDeClientesToolStripMenuItem.Name = "cadastroDeClientesToolStripMenuItem";
-            this.cadastroDeClientesToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.cadastroDeClientesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+            this.cadastroDeClientesToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.cadastroDeClientesToolStripMenuItem.Text = "Cadastro de &Clientes";
             this.cadastroDeClientesToolStripMenuItem.Click += new System.EventHandler(this.cadastroDeClientesToolStripMenuItem_Click);
             // 
@@ -221,52 +227,14 @@
             this.toolStripButton3,
             this.toolStripButton4,
             this.toolStripSeparator2,
-            this.toolStripSplitButton1});
+            this.toolStripSplitButton1,
+            this.toolStripSeparator3,
+            this.toolStripButton5});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // sstStatus
-            // 
-            this.sstStatus.AutoSize = false;
-            this.sstStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sslTexto,
-            this.sslHora});
-            this.sstStatus.Location = new System.Drawing.Point(0, 428);
-            this.sstStatus.Name = "sstStatus";
-            this.sstStatus.Size = new System.Drawing.Size(800, 22);
-            this.sstStatus.TabIndex = 4;
-            this.sstStatus.Text = "statusStrip1";
-            // 
-            // sslTexto
-            // 
-            this.sslTexto.AutoSize = false;
-            this.sslTexto.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.sslTexto.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
-            this.sslTexto.Name = "sslTexto";
-            this.sslTexto.Size = new System.Drawing.Size(605, 17);
-            this.sslTexto.Spring = true;
-            // 
-            // sslHora
-            // 
-            this.sslHora.AutoSize = false;
-            this.sslHora.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.sslHora.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
-            this.sslHora.Name = "sslHora";
-            this.sslHora.Size = new System.Drawing.Size(180, 17);
-            this.sslHora.Text = "toolStripStatusLabel2";
-            // 
-            // tmrHora
-            // 
-            this.tmrHora.Enabled = true;
-            this.tmrHora.Interval = 1000;
-            this.tmrHora.Tick += new System.EventHandler(this.tmrHora_Tick);
             // 
             // toolStripButton1
             // 
@@ -312,11 +280,80 @@
             // toolStripSplitButton1
             // 
             this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.relatórioDeClientesToolStripMenuItem,
+            this.relatórioDeVendasToolStripMenuItem});
             this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
             this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
             this.toolStripSplitButton1.Text = "toolStripSplitButton1";
+            // 
+            // sstStatus
+            // 
+            this.sstStatus.AutoSize = false;
+            this.sstStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sslTexto,
+            this.sslHora});
+            this.sstStatus.Location = new System.Drawing.Point(0, 428);
+            this.sstStatus.Name = "sstStatus";
+            this.sstStatus.Size = new System.Drawing.Size(800, 22);
+            this.sstStatus.TabIndex = 4;
+            this.sstStatus.Text = "statusStrip1";
+            // 
+            // sslTexto
+            // 
+            this.sslTexto.AutoSize = false;
+            this.sslTexto.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.sslTexto.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
+            this.sslTexto.Name = "sslTexto";
+            this.sslTexto.Size = new System.Drawing.Size(605, 17);
+            this.sslTexto.Spring = true;
+            // 
+            // sslHora
+            // 
+            this.sslHora.AutoSize = false;
+            this.sslHora.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.sslHora.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
+            this.sslHora.Name = "sslHora";
+            this.sslHora.Size = new System.Drawing.Size(180, 17);
+            this.sslHora.Text = "toolStripStatusLabel2";
+            // 
+            // tmrHora
+            // 
+            this.tmrHora.Enabled = true;
+            this.tmrHora.Interval = 1000;
+            this.tmrHora.Tick += new System.EventHandler(this.tmrHora_Tick);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton5.Text = "toolStripButton5";
+            // 
+            // relatórioDeClientesToolStripMenuItem
+            // 
+            this.relatórioDeClientesToolStripMenuItem.Name = "relatórioDeClientesToolStripMenuItem";
+            this.relatórioDeClientesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.relatórioDeClientesToolStripMenuItem.Text = "Relatório de &Clientes";
+            // 
+            // relatórioDeVendasToolStripMenuItem
+            // 
+            this.relatórioDeVendasToolStripMenuItem.Name = "relatórioDeVendasToolStripMenuItem";
+            this.relatórioDeVendasToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.relatórioDeVendasToolStripMenuItem.Text = "Relatório de &Vendas";
             // 
             // FrmMenu
             // 
@@ -379,5 +416,9 @@
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripMenuItem relatórioDeClientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatórioDeVendasToolStripMenuItem;
     }
 }
