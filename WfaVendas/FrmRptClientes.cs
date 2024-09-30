@@ -16,5 +16,11 @@ namespace WfaVendas
         {
             InitializeComponent();
         }
+
+        private void FrmRptClientes_Load(object sender, EventArgs e)
+        {
+            this.pc_clientesTableAdapter1.Fill(this.lP2DataSet.pc_clientes);
+            this.reportViewer1.RefreshReport();
+        }
     }
 }

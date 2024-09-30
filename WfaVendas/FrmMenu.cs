@@ -66,5 +66,31 @@ namespace WfaVendas
         {
 
         }
+
+        private void relatorioDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in MdiChildren)
+            {
+                if (form is FrmRptClientes)
+                {
+                    form.Focus();
+                    return;
+                }
+
+            }
+            FrmRptClientes frmRptClientes = new FrmRptClientes();
+            frmRptClientes.MdiParent = this;
+            frmRptClientes.Show();
+        }
+
+        private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void relatórioDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            relatorioDeClientesToolStripMenuItem_Click(null, null);
+        }
     }
 }

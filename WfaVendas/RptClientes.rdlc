@@ -334,6 +334,7 @@
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>dd/MM/yyyy</Format>
                                 <Color>DimGray</Color>
                               </Style>
                             </TextRun>
@@ -574,7 +575,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!telefone.Value</Value>
+                              <Value>="(" &amp; Mid(Fields!telefone.Value,1,2) &amp; ") " &amp; Mid(Fields!telefone.Value,3,5) &amp; "-"&amp; Mid(Fields!telefone.Value,8,4)</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
                                 <Color>#333333</Color>
@@ -610,11 +611,14 @@
                               <Value>=Fields!datanasc.Value</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
+                                <Format>dd/MM/yyyy</Format>
                                 <Color>#333333</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>datanasc</rd:DefaultName>
@@ -659,7 +663,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Height>1.2cm</Height>
-        <Width>26.57458cm</Width>
+        <Width>26.57459cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -670,7 +674,7 @@
     <Height>0.57292in</Height>
     <Style />
   </Body>
-  <Width>10.46243in</Width>
+  <Width>10.46244in</Width>
   <Page>
     <PageHeader>
       <Height>1.29646cm</Height>
