@@ -71,6 +71,7 @@
             this.btnAlterarItem = new System.Windows.Forms.Button();
             this.btnIncluirItem = new System.Windows.Forms.Button();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
+            this.pcprodutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSair = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
@@ -93,9 +94,8 @@
             this.txtObs = new System.Windows.Forms.TextBox();
             this.dtpDataEntrega = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.jdkjhf = new System.Windows.Forms.TextBox();
+            this.txtTotalVenda = new System.Windows.Forms.TextBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
-            this.pcprodutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pc_produtoTableAdapter = new WfaVendas.LP2DataSetTableAdapters.pc_produtoTableAdapter();
             codcliLabel = new System.Windows.Forms.Label();
             lblNumVenda = new System.Windows.Forms.Label();
@@ -116,8 +116,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcclientesBindingSource)).BeginInit();
             this.grpItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcprodutoBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // codcliLabel
@@ -559,6 +559,11 @@
             this.cmbProduto.ValueMember = "descricao";
             this.cmbProduto.SelectedIndexChanged += new System.EventHandler(this.cmbProduto_SelectedIndexChanged);
             // 
+            // pcprodutoBindingSource
+            // 
+            this.pcprodutoBindingSource.DataMember = "pc_produto";
+            this.pcprodutoBindingSource.DataSource = this.lP2DataSet;
+            // 
             // btnSair
             // 
             this.btnSair.BackColor = System.Drawing.Color.SeaShell;
@@ -788,7 +793,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.jdkjhf);
+            this.panel1.Controls.Add(this.txtTotalVenda);
             this.panel1.Controls.Add(label3);
             this.panel1.Controls.Add(label2);
             this.panel1.Controls.Add(this.txtTotal);
@@ -798,16 +803,16 @@
             this.panel1.Size = new System.Drawing.Size(811, 48);
             this.panel1.TabIndex = 67;
             // 
-            // jdkjhf
+            // txtTotalVenda
             // 
-            this.jdkjhf.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.jdkjhf.ForeColor = System.Drawing.Color.Tomato;
-            this.jdkjhf.Location = new System.Drawing.Point(687, 12);
-            this.jdkjhf.Name = "jdkjhf";
-            this.jdkjhf.ReadOnly = true;
-            this.jdkjhf.Size = new System.Drawing.Size(100, 20);
-            this.jdkjhf.TabIndex = 35;
-            this.jdkjhf.Text = "R$ 0,00";
+            this.txtTotalVenda.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtTotalVenda.ForeColor = System.Drawing.Color.Tomato;
+            this.txtTotalVenda.Location = new System.Drawing.Point(687, 12);
+            this.txtTotalVenda.Name = "txtTotalVenda";
+            this.txtTotalVenda.ReadOnly = true;
+            this.txtTotalVenda.Size = new System.Drawing.Size(100, 20);
+            this.txtTotalVenda.TabIndex = 35;
+            this.txtTotalVenda.Text = "R$ 0,00";
             // 
             // txtTotal
             // 
@@ -817,11 +822,6 @@
             this.txtTotal.Size = new System.Drawing.Size(100, 20);
             this.txtTotal.TabIndex = 36;
             this.txtTotal.Text = "R$ 0.00";
-            // 
-            // pcprodutoBindingSource
-            // 
-            this.pcprodutoBindingSource.DataMember = "pc_produto";
-            this.pcprodutoBindingSource.DataSource = this.lP2DataSet;
             // 
             // pc_produtoTableAdapter
             // 
@@ -875,9 +875,9 @@
             this.grpItem.ResumeLayout(false);
             this.grpItem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcprodutoBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcprodutoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -938,7 +938,7 @@
         private System.Windows.Forms.TextBox txtPrecounit;
         private System.Windows.Forms.NumericUpDown nudQuantidade;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox jdkjhf;
+        private System.Windows.Forms.TextBox txtTotalVenda;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.BindingSource pcprodutoBindingSource;
         private LP2DataSetTableAdapters.pc_produtoTableAdapter pc_produtoTableAdapter;
