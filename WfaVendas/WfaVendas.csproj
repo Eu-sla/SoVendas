@@ -78,6 +78,12 @@
     <Compile Include="FrmRptClientes.Designer.cs">
       <DependentUpon>FrmRptClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmRptVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRptVendas.Designer.cs">
+      <DependentUpon>FrmRptVendas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmVendasLF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     <EmbeddedResource Include="FrmRptClientes.resx">
       <DependentUpon>FrmRptClientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmRptVendas.resx">
+      <DependentUpon>FrmRptVendas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSplash.resx">
       <DependentUpon>FrmSplash.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +163,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="RptClientes.rdlc" />
+    <EmbeddedResource Include="RptVendas.rdlc" />
     <None Include="LP2DataSet.xsc">
       <DependentUpon>LP2DataSet.xsd</DependentUpon>
     </None>

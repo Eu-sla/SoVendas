@@ -165,6 +165,7 @@
             this.relatorioDeVendasToolStripMenuItem.Name = "relatorioDeVendasToolStripMenuItem";
             this.relatorioDeVendasToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.relatorioDeVendasToolStripMenuItem.Text = "Relatório de &Vendas";
+            this.relatorioDeVendasToolStripMenuItem.Click += new System.EventHandler(this.relatorioDeVendasToolStripMenuItem_Click);
             // 
             // relatorioDeProdutosToolStripMenuItem
             // 

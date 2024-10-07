@@ -363,6 +363,37 @@ WHERE (pc_venda.numvenda = @numvenda);</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RptVendasTableAdapter" GeneratorDataComponentClassName="RptVendasTableAdapter" Name="RptVendas" UserDataComponentName="RptVendasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        pc_venda.numvenda, pc_venda.datavenda, pc_venda.dataentrega, pc_venda.codcli, pc_clientes.nome, pc_venda.obs, pc_itemvenda.codpro, pc_produto.descricao, pc_itemvenda.quantidade, pc_itemvenda.precounit, 
+                         pc_itemvenda.quantidade * pc_itemvenda.precounit AS Subtotal
+FROM            pc_venda INNER JOIN
+                         pc_clientes ON pc_venda.codcli = pc_clientes.codcli INNER JOIN
+                         pc_itemvenda ON pc_venda.numvenda = pc_itemvenda.numvenda INNER JOIN
+                         pc_produto ON pc_itemvenda.codpro = pc_produto.codpro</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="numvenda" DataSetColumn="numvenda" />
+              <Mapping SourceColumn="datavenda" DataSetColumn="datavenda" />
+              <Mapping SourceColumn="dataentrega" DataSetColumn="dataentrega" />
+              <Mapping SourceColumn="codcli" DataSetColumn="codcli" />
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="obs" DataSetColumn="obs" />
+              <Mapping SourceColumn="codpro" DataSetColumn="codpro" />
+              <Mapping SourceColumn="descricao" DataSetColumn="descricao" />
+              <Mapping SourceColumn="quantidade" DataSetColumn="quantidade" />
+              <Mapping SourceColumn="precounit" DataSetColumn="precounit" />
+              <Mapping SourceColumn="Subtotal" DataSetColumn="Subtotal" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -483,6 +514,41 @@ WHERE (pc_venda.numvenda = @numvenda);</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RptVendas" msprop:Generator_TableClassName="RptVendasDataTable" msprop:Generator_TableVarName="tableRptVendas" msprop:Generator_TablePropName="RptVendas" msprop:Generator_RowDeletingName="RptVendasRowDeleting" msprop:Generator_RowChangingName="RptVendasRowChanging" msprop:Generator_RowEvHandlerName="RptVendasRowChangeEventHandler" msprop:Generator_RowDeletedName="RptVendasRowDeleted" msprop:Generator_UserTableName="RptVendas" msprop:Generator_RowChangedName="RptVendasRowChanged" msprop:Generator_RowEvArgName="RptVendasRowChangeEvent" msprop:Generator_RowClassName="RptVendasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="numvenda" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnnumvenda" msprop:Generator_ColumnPropNameInRow="numvenda" msprop:Generator_ColumnPropNameInTable="numvendaColumn" msprop:Generator_UserColumnName="numvenda" type="xs:int" />
+              <xs:element name="datavenda" msprop:Generator_ColumnVarNameInTable="columndatavenda" msprop:Generator_ColumnPropNameInRow="datavenda" msprop:Generator_ColumnPropNameInTable="datavendaColumn" msprop:Generator_UserColumnName="datavenda" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="dataentrega" msprop:Generator_ColumnVarNameInTable="columndataentrega" msprop:Generator_ColumnPropNameInRow="dataentrega" msprop:Generator_ColumnPropNameInTable="dataentregaColumn" msprop:Generator_UserColumnName="dataentrega" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="codcli" msprop:Generator_ColumnVarNameInTable="columncodcli" msprop:Generator_ColumnPropNameInRow="codcli" msprop:Generator_ColumnPropNameInTable="codcliColumn" msprop:Generator_UserColumnName="codcli" type="xs:int" minOccurs="0" />
+              <xs:element name="nome" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_UserColumnName="nome" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="obs" msprop:Generator_ColumnVarNameInTable="columnobs" msprop:Generator_ColumnPropNameInRow="obs" msprop:Generator_ColumnPropNameInTable="obsColumn" msprop:Generator_UserColumnName="obs" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1073741823" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="codpro" msprop:Generator_ColumnVarNameInTable="columncodpro" msprop:Generator_ColumnPropNameInRow="codpro" msprop:Generator_ColumnPropNameInTable="codproColumn" msprop:Generator_UserColumnName="codpro" type="xs:int" />
+              <xs:element name="descricao" msprop:Generator_ColumnVarNameInTable="columndescricao" msprop:Generator_ColumnPropNameInRow="descricao" msprop:Generator_ColumnPropNameInTable="descricaoColumn" msprop:Generator_UserColumnName="descricao" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="quantidade" msprop:Generator_ColumnVarNameInTable="columnquantidade" msprop:Generator_ColumnPropNameInRow="quantidade" msprop:Generator_ColumnPropNameInTable="quantidadeColumn" msprop:Generator_UserColumnName="quantidade" type="xs:int" minOccurs="0" />
+              <xs:element name="precounit" msprop:Generator_ColumnVarNameInTable="columnprecounit" msprop:Generator_ColumnPropNameInRow="precounit" msprop:Generator_ColumnPropNameInTable="precounitColumn" msprop:Generator_UserColumnName="precounit" type="xs:double" minOccurs="0" />
+              <xs:element name="Subtotal" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSubtotal" msprop:Generator_ColumnPropNameInRow="Subtotal" msprop:Generator_ColumnPropNameInTable="SubtotalColumn" msprop:Generator_UserColumnName="Subtotal" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
