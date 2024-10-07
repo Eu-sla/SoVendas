@@ -363,17 +363,16 @@ WHERE (pc_venda.numvenda = @numvenda);</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RptVendasTableAdapter" GeneratorDataComponentClassName="RptVendasTableAdapter" Name="RptVendas" UserDataComponentName="RptVendasTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RptVendasTableAdapter" GeneratorDataComponentClassName="RptVendasTableAdapter" Name="DataTable1" UserDataComponentName="RptVendasTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        pc_venda.numvenda, pc_venda.datavenda, pc_venda.dataentrega, pc_venda.codcli, pc_clientes.nome, pc_venda.obs, pc_itemvenda.codpro, pc_produto.descricao, pc_itemvenda.quantidade, pc_itemvenda.precounit, 
-                         pc_itemvenda.quantidade * pc_itemvenda.precounit AS Subtotal
-FROM            pc_venda INNER JOIN
-                         pc_clientes ON pc_venda.codcli = pc_clientes.codcli INNER JOIN
-                         pc_itemvenda ON pc_venda.numvenda = pc_itemvenda.numvenda INNER JOIN
-                         pc_produto ON pc_itemvenda.codpro = pc_produto.codpro</CommandText>
+                    <CommandText>SELECT        pc_venda.numvenda, pc_venda.datavenda, pc_venda.dataentrega, pc_venda.codcli, pc_clientes.nome, pc_venda.obs, pc_itemvenda.codpro, pc_produto.descricao, pc_itemvenda.quantidade, pc_itemvenda.precounit
+FROM            pc_produto INNER JOIN
+                         pc_itemvenda ON pc_produto.codpro = pc_itemvenda.codpro INNER JOIN
+                         pc_venda ON pc_itemvenda.numvenda = pc_venda.numvenda INNER JOIN
+                         pc_clientes ON pc_venda.codcli = pc_clientes.codcli</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -390,7 +389,6 @@ FROM            pc_venda INNER JOIN
               <Mapping SourceColumn="descricao" DataSetColumn="descricao" />
               <Mapping SourceColumn="quantidade" DataSetColumn="quantidade" />
               <Mapping SourceColumn="precounit" DataSetColumn="precounit" />
-              <Mapping SourceColumn="Subtotal" DataSetColumn="Subtotal" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -517,7 +515,7 @@ FROM            pc_venda INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="RptVendas" msprop:Generator_TableClassName="RptVendasDataTable" msprop:Generator_TableVarName="tableRptVendas" msprop:Generator_TablePropName="RptVendas" msprop:Generator_RowDeletingName="RptVendasRowDeleting" msprop:Generator_RowChangingName="RptVendasRowChanging" msprop:Generator_RowEvHandlerName="RptVendasRowChangeEventHandler" msprop:Generator_RowDeletedName="RptVendasRowDeleted" msprop:Generator_UserTableName="RptVendas" msprop:Generator_RowChangedName="RptVendasRowChanged" msprop:Generator_RowEvArgName="RptVendasRowChangeEvent" msprop:Generator_RowClassName="RptVendasRow">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="numvenda" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnnumvenda" msprop:Generator_ColumnPropNameInRow="numvenda" msprop:Generator_ColumnPropNameInTable="numvendaColumn" msprop:Generator_UserColumnName="numvenda" type="xs:int" />
@@ -548,7 +546,6 @@ FROM            pc_venda INNER JOIN
               </xs:element>
               <xs:element name="quantidade" msprop:Generator_ColumnVarNameInTable="columnquantidade" msprop:Generator_ColumnPropNameInRow="quantidade" msprop:Generator_ColumnPropNameInTable="quantidadeColumn" msprop:Generator_UserColumnName="quantidade" type="xs:int" minOccurs="0" />
               <xs:element name="precounit" msprop:Generator_ColumnVarNameInTable="columnprecounit" msprop:Generator_ColumnPropNameInRow="precounit" msprop:Generator_ColumnPropNameInTable="precounitColumn" msprop:Generator_UserColumnName="precounit" type="xs:double" minOccurs="0" />
-              <xs:element name="Subtotal" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSubtotal" msprop:Generator_ColumnPropNameInRow="Subtotal" msprop:Generator_ColumnPropNameInTable="SubtotalColumn" msprop:Generator_UserColumnName="Subtotal" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -574,9 +571,9 @@ FROM            pc_venda INNER JOIN
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_pc_itemvendaproduto" msdata:parent="pc_produto" msdata:child="pc_itemvenda" msdata:parentkey="codpro" msdata:childkey="codpro" msprop:Generator_UserChildTable="pc_itemvenda" msprop:Generator_ChildPropName="Getpc_itemvendaRows" msprop:Generator_UserRelationName="FK_pc_itemvendaproduto" msprop:Generator_ParentPropName="pc_produtoRow" msprop:Generator_RelationVarName="relationFK_pc_itemvendaproduto" msprop:Generator_UserParentTable="pc_produto" />
-      <msdata:Relationship name="FK_pc_itemvendavenda" msdata:parent="pc_venda" msdata:child="pc_itemvenda" msdata:parentkey="numvenda" msdata:childkey="numvenda" msprop:Generator_UserChildTable="pc_itemvenda" msprop:Generator_ChildPropName="Getpc_itemvendaRows" msprop:Generator_UserRelationName="FK_pc_itemvendavenda" msprop:Generator_ParentPropName="pc_vendaRow" msprop:Generator_RelationVarName="relationFK_pc_itemvendavenda" msprop:Generator_UserParentTable="pc_venda" />
-      <msdata:Relationship name="FK_pc_venda" msdata:parent="pc_clientes" msdata:child="pc_venda" msdata:parentkey="codcli" msdata:childkey="codcli" msprop:Generator_UserChildTable="pc_venda" msprop:Generator_ChildPropName="Getpc_vendaRows" msprop:Generator_UserRelationName="FK_pc_venda" msprop:Generator_RelationVarName="relationFK_pc_venda" msprop:Generator_UserParentTable="pc_clientes" msprop:Generator_ParentPropName="pc_clientesRow" />
+      <msdata:Relationship name="FK_pc_itemvendaproduto" msdata:parent="pc_produto" msdata:child="pc_itemvenda" msdata:parentkey="codpro" msdata:childkey="codpro" msprop:Generator_UserChildTable="pc_itemvenda" msprop:Generator_ChildPropName="Getpc_itemvendaRows" msprop:Generator_UserRelationName="FK_pc_itemvendaproduto" msprop:Generator_RelationVarName="relationFK_pc_itemvendaproduto" msprop:Generator_UserParentTable="pc_produto" msprop:Generator_ParentPropName="pc_produtoRow" />
+      <msdata:Relationship name="FK_pc_itemvendavenda" msdata:parent="pc_venda" msdata:child="pc_itemvenda" msdata:parentkey="numvenda" msdata:childkey="numvenda" msprop:Generator_UserChildTable="pc_itemvenda" msprop:Generator_ChildPropName="Getpc_itemvendaRows" msprop:Generator_UserRelationName="FK_pc_itemvendavenda" msprop:Generator_RelationVarName="relationFK_pc_itemvendavenda" msprop:Generator_UserParentTable="pc_venda" msprop:Generator_ParentPropName="pc_vendaRow" />
+      <msdata:Relationship name="FK_pc_venda" msdata:parent="pc_clientes" msdata:child="pc_venda" msdata:parentkey="codcli" msdata:childkey="codcli" msprop:Generator_UserChildTable="pc_venda" msprop:Generator_ChildPropName="Getpc_vendaRows" msprop:Generator_UserRelationName="FK_pc_venda" msprop:Generator_ParentPropName="pc_clientesRow" msprop:Generator_RelationVarName="relationFK_pc_venda" msprop:Generator_UserParentTable="pc_clientes" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
