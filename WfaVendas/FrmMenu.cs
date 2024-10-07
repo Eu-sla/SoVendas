@@ -95,18 +95,7 @@ namespace WfaVendas
 
         private void relatorioDeVendasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (Form form in MdiChildren)
-            {
-                if (form is FrmRptVendas)
-                {
-                    form.Focus();
-                    return;
-                }
-
-            }
-            FrmRptVendas frmRptVendas = new FrmRptVendas();
-            frmRptVendas.MdiParent = this;
-            frmRptVendas.Show();
+            
         }
     }
 }
