@@ -17,7 +17,7 @@ namespace WfaVendas
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmSplash());
-            Application.Run(new FrmMenu());  
+            Application.Run(new FrmMenu());   
         }
     }
 }

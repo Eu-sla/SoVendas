@@ -92,5 +92,10 @@ namespace WfaVendas
         {
             relatorioDeClientesToolStripMenuItem_Click(null, null);
         }
+
+        private void mnuMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+             
+        }
     }
 }

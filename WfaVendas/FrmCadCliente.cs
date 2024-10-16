@@ -17,7 +17,7 @@ namespace WfaVendas
         public FrmCadCliente()
         {
             InitializeComponent(); 
-            
+             
         }
 
         private void FrmCadCliente_Load(object sender, EventArgs e)
