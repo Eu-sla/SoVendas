@@ -21,6 +21,7 @@ namespace WfaVendas
         {
             this.pc_clientesTableAdapter1.Fill(this.lP2DataSet.pc_clientes);
             this.reportViewer1.RefreshReport();
+             
         }
     }
 }

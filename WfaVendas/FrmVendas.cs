@@ -23,6 +23,7 @@ namespace WfaVendas
         public FrmVendas()
         {
             InitializeComponent();
+              
         }
 
         private void FrmVendas_Load(object sender, EventArgs e)

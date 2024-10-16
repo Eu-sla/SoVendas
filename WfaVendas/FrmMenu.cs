@@ -64,7 +64,7 @@ namespace WfaVendas
 
         private void FrmMenu_Load(object sender, EventArgs e)
         {
-
+              
         }
 
         private void relatorioDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
