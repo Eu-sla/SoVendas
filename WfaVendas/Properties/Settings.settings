@@ -10,5 +10,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=Apolo;Initial Catalog=LP2;Persist Security Info=True;User ID=ds230216;Password=Isa19122007;TrustServerCertificate=True</Value>
     </Setting>
+    <Setting Name="Configuração" Type="System.String" Scope="User">
+      <Value Profile="(Default)"> </Value>
+    </Setting>
   </Settings>
 </SettingsFile>
