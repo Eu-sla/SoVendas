@@ -16,14 +16,14 @@ namespace WfaVendas
         bool incluir = false;
         public FrmCadCliente()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+             
         }
 
         private void FrmCadCliente_Load(object sender, EventArgs e)
         {
             // TODO: esta linha de código carrega dados na tabela 'lP2DataSet.pc_clientes'. Você pode movê-la ou removê-la conforme necessário.
             this.pc_clientesTableAdapter.Fill(this.lP2DataSet.pc_clientes);
-
         }
 
         private void btnSair_Click(object sender, EventArgs e)

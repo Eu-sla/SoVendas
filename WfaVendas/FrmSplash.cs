@@ -21,5 +21,10 @@ namespace WfaVendas
         {
             Close();
         }
+
+        private void FrmSplash_Load(object sender, EventArgs e)
+        {
+               
+        }
     }
 }

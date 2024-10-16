@@ -906,8 +906,8 @@ SELECT codpro, descricao, quantidade, precounit FROM pc_produto WHERE (codpro = 
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT codpro, descricao, quantidade, precounit \nFROM pc_produto WHERE (descricao" +
-                " LIKE @descricao);";
+            this._commandCollection[1].CommandText = "SELECT codpro, descricao, quantidade, precounit \r\nFROM pc_produto WHERE (descrica" +
+                "o LIKE @descricao);";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@descricao", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "descricao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
